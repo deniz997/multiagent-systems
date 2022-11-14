@@ -21,3 +21,6 @@ gradle-app.setting
 .classpath
 
 logs
+
+.settings
+bin
