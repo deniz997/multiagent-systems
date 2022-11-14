@@ -25,6 +25,11 @@ public class App extends javafx.application.Application {
         stage.show();
     }
 
+    @Override
+    public void stop() {
+        logger.info("Stopping application..");
+    }
+
     public static void main(String[] args) {
         launch();
     }
