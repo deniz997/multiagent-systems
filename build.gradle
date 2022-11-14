@@ -24,7 +24,7 @@ tasks.withType(JavaCompile) {
 
 application {
     mainModule = 'mat.agent.reactive'
-    mainClass = 'mat.agent.reactive.HelloApplication'
+    mainClass = 'mat.agent.reactive.App'
 }
 
 javafx {
