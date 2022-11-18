@@ -1,12 +1,10 @@
 package mat.agent.reactive.model;
-
-
-
 public class Grid {
 	
 	public int size_x;
 	public int size_y;
 	public int[][] matrix;
+	public int[][] matrixInitialStatus;
 	enum PPositions {
 		NONE,
 		RANDOM_BORDER,
@@ -163,7 +161,8 @@ public class Grid {
 			break;
 			
 		}
-		}
+		matrixInitialStatus=matrix;
+	}
 	
 		
 		
