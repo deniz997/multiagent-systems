@@ -1,44 +1,65 @@
 package mat.agent.reactive.model;
+import java.util.ArrayList;
+
+
 public class Grid {
 	
 	public int size_x;
 	public int size_y;
 	public int[][] matrix;
 	public int[][] matrixInitialStatus;
-	enum PPositions {
+	enum IdlingZones {
 		NONE,
 		RANDOM_BORDER,
 		RANDOM,
 		NEAREST_BORDER,
 		DISTRIBUTED_BORDER
 	}
-	PPositions pPosition;
+	public IdlingZones pPosition;
 	public int numberOfIdlingZones;
 	public int DROP_ZONE = 9;
 	public int IDLING_ZONE = 5;
 	public int FREE = 0;
 	public int ROBOT= 1;	
+	public ArrayList<Coordinate> idlingZones;
 	
 	
 	
-	
-	public Grid (int size_x, int size_y, PPositions pPosition , int numberOfIdlingZones) {
+	public Grid (int size_x, int size_y, IdlingZones pPosition , int numberOfIdlingZones) {
 		this.size_x = size_x;
 		this.size_y = size_y;
 		this.matrix = new int[size_x][size_y]; 
+		this.matrixInitialStatus = new int[size_x][size_y]; 
 		this.pPosition = pPosition;
 		this.numberOfIdlingZones = numberOfIdlingZones;
 		this.init();
+		this.fillIdlingZonesList();
 		this.printMatrix();
 		
 
 	}
 	
+	private void fillIdlingZonesList() {
+		idlingZones = new ArrayList<Coordinate>();
+			for (int y = 0; y < size_y; y++) {
+			    for (int x = 0; x < size_x; x++) {
+			        if (matrix[x][y]==IDLING_ZONE) {
+			        	this.idlingZones.add(new Coordinate(x, y));
+			        }
+			        
+			    }		
+			}
+			for(Coordinate idlingZones : idlingZones) {
+				System.out.println("x:" + idlingZones.x + " y: "+idlingZones.y);
+			}
+		}
+	
+
 	public void init() {
 		int currentIdlingZones = 0;
 //		drop of zones
 		for (int i = 0; i < this.size_x/2+1; i++) {
-			matrix[0][i*2]= DROP_ZONE;
+			matrix[i*2][0]= DROP_ZONE;
 		}
 //			
 
@@ -104,9 +125,7 @@ public class Grid {
 		case RANDOM:
 			while(currentIdlingZones<numberOfIdlingZones) {
 				int random_x = (int)Math.floor(Math.random()*(size_x)); //random number between 0 and size_x
-				System.out.println(random_x);
 				int random_y = (int)Math.floor(Math.random()*(size_y));
-				System.out.println(random_y);
 				if (matrix[random_x][random_y]!=DROP_ZONE && matrix[random_x][random_y]!=IDLING_ZONE) {
 					matrix[random_x][random_y] = IDLING_ZONE;
 					currentIdlingZones++;
@@ -116,7 +135,6 @@ public class Grid {
 		case RANDOM_BORDER:
 //			first check if the border space is big enough
 			int maxNumberOfIdlingZones=(((size_x-1)/2))+(2*(size_y-2))+size_x-2;
-			System.out.println(maxNumberOfIdlingZones);
 			if (numberOfIdlingZones>maxNumberOfIdlingZones) {
 				System.err.println("more idling zones than " + maxNumberOfIdlingZones + " are not possible");
 			}
@@ -161,15 +179,14 @@ public class Grid {
 			break;
 			
 		}
-		matrixInitialStatus=matrix;
 	}
 	
 		
 		
 	public void printMatrix() {
 		
-		for (int x = 0; x < size_x; x++) {
-		    for (int y = 0; y < size_y; y++) {
+		for (int y = 0; y < size_y; y++) {
+		    for (int x = 0; x < size_x; x++) {
 		        System.out.print(matrix[x][y] + " ");
 		    }
 		    System.out.println();
@@ -177,7 +194,7 @@ public class Grid {
 	}
 	
 //	public static void main(String[] args) {
-//		Grid grid = new Grid(7, 7, PPositions.RANDOM_BORDER, 5);
+//		Grid grid = new Grid(7, 7, IdlingZones.RANDOM_BORDER, 5);
 //
 //	}
 		
