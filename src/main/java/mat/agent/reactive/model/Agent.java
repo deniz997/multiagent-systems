@@ -1,7 +1,11 @@
 package mat.agent.reactive.model;
 
+import mat.agent.reactive.App;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Agent {
-	
+	private static final Logger logger = LogManager.getLogger(Agent.class);
 	public int position_x;
 	public int position_y;
 	
@@ -38,6 +42,8 @@ public class Agent {
 	
 	int[][] matrix;
 	public Status status;
+	private int numberOfCompletedOrders = 0;
+	private int numberOfAvoidedCollisions = 0;
 	
 
 	public Agent (int startX, int startY, int id) {
@@ -96,8 +102,10 @@ public class Agent {
 			position_x = position_x+1;
 			grid.matrix[position_x][position_y]=ID;
 			System.out.println(ID+ ": moved right");
+
 			checkForStatusUpdate(destX, destY);
-			return grid;
+			logAgentMove(ID, "UP", position_x, position_y, destX, destY, status);
+				return grid;
 			}
 		}else if(position_x>destX) {
 			if (collisionChecker(Check.LEFT, grid.matrix)){
@@ -105,8 +113,9 @@ public class Agent {
 				position_x = position_x-1;
 				grid.matrix[position_x][position_y]=ID;
 				System.out.println(ID+ ": moved left");
-				checkForStatusUpdate(destX, destY);
 
+				checkForStatusUpdate(destX, destY);
+				logAgentMove(ID, "UP", position_x, position_y, destX, destY, status);
 				return grid;
 			}
 		}else if(position_y<destY) {
@@ -115,8 +124,9 @@ public class Agent {
 			position_y = position_y+1;
 			grid.matrix[position_x][position_y]=ID;
 			System.out.println(ID+ ": moved down");
-			checkForStatusUpdate(destX, destY);
 
+			checkForStatusUpdate(destX, destY);
+			logAgentMove(ID, "UP", position_x, position_y, destX, destY, status);
 			return grid;
 			}
 		}else if(position_y>destY) {
@@ -127,10 +137,11 @@ public class Agent {
 			System.out.println(ID+ ": moved up");
 
 			checkForStatusUpdate(destX, destY);
+			logAgentMove(ID, "UP", position_x, position_y, destX, destY, status);
 			return grid;
 			}
 		}
-		
+		logAgentMove(ID, "NONE", position_x, position_y, destX, destY, status);
 		return grid;
 
 	}
@@ -151,6 +162,7 @@ public class Agent {
 				}
 			}else if(status == Status.TO_DROP_OFF) {
 				status=Status.TO_IDLING_ZONE;
+				numberOfCompletedOrders++;
 				System.out.println(ID +  ": changed status to"+ status);
 
 			}else if(status == Status.TO_IDLING_ZONE) {
@@ -175,31 +187,48 @@ public class Agent {
 		case RIGHT:
 			if (matrix[this.position_x+1][this.position_y]!=1 && matrix[this.position_x+1][this.position_y]!=2 && matrix[this.position_x+1][this.position_y]!=3) {
 				return true;
-			}else{ 
+			}else{
+				numberOfAvoidedCollisions++;
 				return false;
 			}
 		case DOWN:
 			if (matrix[this.position_x][this.position_y+1]!=1 && matrix[this.position_x][this.position_y+1]!=2 && matrix[this.position_x][this.position_y+1]!=3 ) {
 				return true;
-			}else{ 
+			}else{
+				numberOfAvoidedCollisions++;
 				return false;
 			}
 		case LEFT:
 			if (matrix[this.position_x-1][this.position_y]!=1 && matrix[this.position_x-1][this.position_y]!=2 && matrix[this.position_x-1][this.position_y]!=3) {
 				return true;
-			}else{ 
+			}else{
+				numberOfAvoidedCollisions++;
 				return false;
 			}
 		case UP:
 			if (matrix[this.position_x][this.position_y-1]!=1 && matrix[this.position_x][this.position_y-1]!=2 && matrix[this.position_x][this.position_y-1]!=3) {
 				return true;
-			}else{ 
+			}else{
+				numberOfAvoidedCollisions++;
 				return false;
 				}
 			}
+		numberOfAvoidedCollisions++;
 		return false;		
 	}
 	
-	
+	private void logAgentMove(int agentId, String movement, int posX, int posY, int destX, int destY, Status status) {
+		logger.info("Agent:" + agentId + "," +
+				"Moved:" + movement + "," +
+				"Position X:" + posX + "," + "Position Y:" + posY + "," +
+				"Destination X:" + destX + "," + "Destination Y:" + destY + "," +
+				"Status:" + status.name());
+	}
+
+	public void logExtraInfo() {
+		logger.info("Agent:" + ID + "," +
+				"Number of completed orders:" + numberOfCompletedOrders + "," +
+				"Number of avoided collisions:" + numberOfAvoidedCollisions);
+	}
 
 }

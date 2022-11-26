@@ -1,9 +1,12 @@
 package mat.agent.reactive.model;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.ArrayList;
 
 
 public class Grid {
-	
+	private static final Logger logger = LogManager.getLogger(Grid.class);
 	public int size_x;
 	public int size_y;
 	public int[][] matrix;
@@ -32,11 +35,10 @@ public class Grid {
 		this.matrixInitialStatus = new int[size_x][size_y]; 
 		this.pPosition = pPosition;
 		this.numberOfIdlingZones = numberOfIdlingZones;
+		logGridData(size_x, size_y, numberOfIdlingZones, pPosition.name());
 		this.init();
 		this.fillIdlingZonesList();
 		this.printMatrix();
-		
-
 	}
 	
 	private void fillIdlingZonesList() {
@@ -51,6 +53,7 @@ public class Grid {
 			}
 			for(Coordinate idlingZones : idlingZones) {
 				System.out.println("x:" + idlingZones.x + " y: "+idlingZones.y);
+				logZones("IDLING_ZONE", idlingZones.x, idlingZones.y);
 			}
 		}
 	
@@ -60,6 +63,7 @@ public class Grid {
 //		drop of zones
 		for (int i = 0; i < this.size_x/2+1; i++) {
 			matrix[i*2][0]= DROP_ZONE;
+			logZones("DROP_ZONE", i*2, 0);
 		}
 //			
 
@@ -83,7 +87,7 @@ public class Grid {
 				if(currentIdlingZones<numberOfIdlingZones) {
 					matrix[size_x-1][y*2] = IDLING_ZONE;
 					currentIdlingZones++;
-				}					
+				}
 			}
 			if(currentIdlingZones<numberOfIdlingZones) {
 				System.err.println("more idling zones than " + currentIdlingZones+ " are not possible");
@@ -116,7 +120,7 @@ public class Grid {
 					if(currentIdlingZones<numberOfIdlingZones) {
 						matrix[size_x-1][y] = IDLING_ZONE;
 						currentIdlingZones++;
-					}	
+					}
 				}
 				if(currentIdlingZones<numberOfIdlingZones) {
 					System.err.println("more idling zones than " + currentIdlingZones+ " are not possible");
@@ -129,7 +133,7 @@ public class Grid {
 				if (matrix[random_x][random_y]!=DROP_ZONE && matrix[random_x][random_y]!=IDLING_ZONE) {
 					matrix[random_x][random_y] = IDLING_ZONE;
 					currentIdlingZones++;
-	 				}
+				}
 			}
 			break;
 		case RANDOM_BORDER:
@@ -148,28 +152,28 @@ public class Grid {
 					if (matrix[0][y]!=DROP_ZONE && matrix[0][y]!=IDLING_ZONE && y<size_y-1){
 						matrix[0][y] = IDLING_ZONE;
 						currentIdlingZones++;
-		 				}
+					}
 //				right
 				case 2: 
 					int x = (int)Math.floor(Math.random()*size_y);
 					if (matrix[x][size_y-1]!=DROP_ZONE && matrix[x][size_y-1]!=IDLING_ZONE && x<size_x-1){
 						matrix[x][size_y-1] = IDLING_ZONE;
 						currentIdlingZones++;
-		 				}
+					}
 //				bottom	
 				case 3: 
 					int y_b = 1 + (int)(Math.random() * ((size_y - 3) + 1)); //to make sure its not filling the corners
 					if (matrix[size_x-1][y_b]!=DROP_ZONE && matrix[size_x-1][y_b]!=IDLING_ZONE){
 						matrix[size_x-1][y_b] = IDLING_ZONE;
 						currentIdlingZones++;
-		 				}
+					}
 //				left
 					
 				case 4: 
 					int x_l = (int)Math.floor(Math.random()*size_y);
 					if (matrix[x_l][0]!=DROP_ZONE && matrix[x_l][0]!=IDLING_ZONE && x_l<size_x-1){
 						matrix[x_l][0] = IDLING_ZONE;
-						currentIdlingZones++;				
+						currentIdlingZones++;
 					}
 					
 				
@@ -197,7 +201,15 @@ public class Grid {
 //		Grid grid = new Grid(7, 7, IdlingZones.RANDOM_BORDER, 5);
 //
 //	}
-		
+	private void logGridData(int sizeX, int sizeY, int numberOfIdlingZones, String distribution) {
+		logger.info("Grid - Size x:" + sizeX + "," + "Size y:" + sizeY + "," +
+		"Number of idling zones:" + numberOfIdlingZones + "," +
+				"Idling zone distribution:" + distribution);
+	}
+
+	private void logZones(String zoneType, int posX, int posY) {
+		logger.info("Zone type:" + zoneType + "," + "Position x:" + posX + "," + "Position y:" + posY);
+	}
 		
 	
 
