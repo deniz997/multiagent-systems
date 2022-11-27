@@ -4,11 +4,9 @@ import mat.agent.reactive.App;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+
 public class Agent {
 	private static final Logger logger = LogManager.getLogger(Agent.class);
-	public int position_x;
-	public int position_y;
-	
 	enum Check {
 		RIGHT,
 		DOWN,
@@ -25,12 +23,6 @@ public class Agent {
 		STAY
 	}
 		
-	int ID;
-	public int dest_x;
-	public int dest_y;
-	public int ROBOT= 1;
-	
-
 	enum Status {
 		LOADING,
 		FREE,
@@ -38,7 +30,18 @@ public class Agent {
 		TO_IDLING_ZONE
 	}
 	
+	int ID;
+	public int dest_x;
+	public int dest_y;
+	public int ROBOT= 1;
+	public int blockedTimer = 0; // Timer to wait one step until doing sidestep
+	public int sidestepLeftTimer=0;
+	public int sidestepRightTimer=0;
+	public int sidestepDownTimer=0;
+	public int sidestepUpTimer=0;
 	int leftOrRight=-1;
+	public int position_x;
+	public int position_y;
 	
 	int[][] matrix;
 	public Status status;
@@ -98,13 +101,13 @@ public class Agent {
 	private Grid actualMove(Grid grid, int destX, int destY) {
 		if(position_x<destX) {
 			if (collisionChecker(Check.RIGHT, grid.matrix)){
-			grid.matrix[position_x][position_y]= grid.matrixInitialStatus[position_x][position_y];
-			position_x = position_x+1;
-			grid.matrix[position_x][position_y]=ID;
-			System.out.println(ID+ ": moved right");
-
-			checkForStatusUpdate(destX, destY);
-			logAgentMove(ID, "UP", position_x, position_y, destX, destY, status);
+				grid.matrix[position_x][position_y]= grid.matrixInitialStatus[position_x][position_y];
+				position_x = position_x+1;
+				grid.matrix[position_x][position_y]=ID;
+//				System.out.println(ID+ ": moved right");
+				blockedTimer=0;
+				checkForStatusUpdate(destX, destY);
+				logAgentMove(ID, "UP", position_x, position_y, destX, destY, status);
 				return grid;
 			}
 		}else if(position_x>destX) {
@@ -113,34 +116,41 @@ public class Agent {
 				position_x = position_x-1;
 				grid.matrix[position_x][position_y]=ID;
 				System.out.println(ID+ ": moved left");
-
+				blockedTimer=0;
 				checkForStatusUpdate(destX, destY);
 				logAgentMove(ID, "UP", position_x, position_y, destX, destY, status);
 				return grid;
 			}
 		}else if(position_y<destY) {
 			if (collisionChecker(Check.DOWN, grid.matrix)){
-			grid.matrix[position_x][position_y]= grid.matrixInitialStatus[position_x][position_y];
-			position_y = position_y+1;
-			grid.matrix[position_x][position_y]=ID;
-			System.out.println(ID+ ": moved down");
-
-			checkForStatusUpdate(destX, destY);
-			logAgentMove(ID, "UP", position_x, position_y, destX, destY, status);
-			return grid;
+				grid.matrix[position_x][position_y]= grid.matrixInitialStatus[position_x][position_y];
+				position_y = position_y+1;
+				grid.matrix[position_x][position_y]=ID;
+//				System.out.println(ID+ ": moved down");			
+				blockedTimer=0;
+				checkForStatusUpdate(destX, destY);
+				logAgentMove(ID, "UP", position_x, position_y, destX, destY, status);
+				return grid;
 			}
 		}else if(position_y>destY) {
 			if (collisionChecker(Check.UP, grid.matrix)){
-			grid.matrix[position_x][position_y]= grid.matrixInitialStatus[position_x][position_y];
-			position_y = position_y-1;
-			grid.matrix[position_x][position_y]=ID;
-			System.out.println(ID+ ": moved up");
-
-			checkForStatusUpdate(destX, destY);
-			logAgentMove(ID, "UP", position_x, position_y, destX, destY, status);
-			return grid;
+				grid.matrix[position_x][position_y]= grid.matrixInitialStatus[position_x][position_y];
+				position_y = position_y-1;
+				grid.matrix[position_x][position_y]=ID;
+				System.out.println(ID+ ": moved up");
+				blockedTimer=0;
+				checkForStatusUpdate(destX, destY);
+				logAgentMove(ID, "UP", position_x, position_y, destX, destY, status);
+				return grid;
 			}
 		}
+		
+		//if code reaches this point, the robot only wants to go one way and cant because of another robot
+		//so he does a random sidestep goint towards the middle
+		if(blockedTimer==1) {
+		return sideStep(grid, destX, destY);
+		}
+		blockedTimer++;
 		logAgentMove(ID, "NONE", position_x, position_y, destX, destY, status);
 		return grid;
 
@@ -152,26 +162,23 @@ public class Agent {
 				Coordinate newDest = order.coordinates.poll();
 				if (newDest==null) {
 					status=Status.TO_DROP_OFF;
-					System.out.println(ID +  ": changed status to"+ status);
-
+//					System.out.println(ID +  ": changed status to"+ status);
 				}else{
-					System.out.println(ID +  ": going to next order position x:" + newDest.x + " y:" +newDest.y);;
-
+//					System.out.println(ID +  ": going to next order position x:" + newDest.x + " y:" +newDest.y);;
 					dest_x=newDest.x;
 					dest_y=newDest.y;
 				}
 			}else if(status == Status.TO_DROP_OFF) {
 				status=Status.TO_IDLING_ZONE;
 				numberOfCompletedOrders++;
-				System.out.println(ID +  ": changed status to"+ status);
-
+//				System.out.println(ID +  ": changed status to"+ status);
 			}else if(status == Status.TO_IDLING_ZONE) {
 				status=Status.FREE;
 				System.out.println(ID +  ": changed status to"+ status);
-
 			}
 		}
 	}
+	
 	
 	public void newOrder(Order order) {
 		this.status = Status.LOADING;
@@ -181,13 +188,61 @@ public class Agent {
 		this.dest_y=newDest.y;
 	}
 	
+	private Grid sideStep(Grid grid, int destX, int destY) {
+		if(position_x<(grid.size_x-1)/2) {
+			if (collisionChecker(Check.RIGHT, grid.matrix)){
+			grid.matrix[position_x][position_y]= grid.matrixInitialStatus[position_x][position_y];
+			position_x = position_x+1;
+			grid.matrix[position_x][position_y]=ID;
+			System.out.println(ID+ ": sidesteped right");
+			sidestepRightTimer++;
+			checkForStatusUpdate(destX, destY);
+			return grid;
+			}
+		}else if(position_x>(grid.size_x-1)/2) {
+			if (collisionChecker(Check.LEFT, grid.matrix)){
+				grid.matrix[position_x][position_y]= grid.matrixInitialStatus[position_x][position_y];
+				position_x = position_x-1;
+				grid.matrix[position_x][position_y]=ID;
+				System.out.println(ID+ ": sidesteped left");
+				checkForStatusUpdate(destX, destY);
+				sidestepLeftTimer++;
+
+				return grid;
+			}
+		}else if(position_y<(grid.size_y-1)/2) {
+			if (collisionChecker(Check.DOWN, grid.matrix)){
+			grid.matrix[position_x][position_y]= grid.matrixInitialStatus[position_x][position_y];
+			position_y = position_y+1;
+			grid.matrix[position_x][position_y]=ID;
+			System.out.println(ID+ ": sidesteped down");
+			checkForStatusUpdate(destX, destY);
+			sidestepDownTimer++;
+
+			return grid;
+			}
+		}else if(position_y>(grid.size_y-1)/2) {
+			if (collisionChecker(Check.UP, grid.matrix)){
+			grid.matrix[position_x][position_y]= grid.matrixInitialStatus[position_x][position_y];
+			position_y = position_y-1;
+			grid.matrix[position_x][position_y]=ID;
+			System.out.println(ID+ ": sidesteped up");
+			checkForStatusUpdate(destX, destY);
+			sidestepUpTimer++;
+			
+			return grid;
+			}
+		}
+		return grid;
+	}
 	
 	public boolean collisionChecker (Check toCheck, int[][] matrix) {
 		switch (toCheck) {
 		case RIGHT:
 			if (matrix[this.position_x+1][this.position_y]!=1 && matrix[this.position_x+1][this.position_y]!=2 && matrix[this.position_x+1][this.position_y]!=3) {
 				return true;
-			}else{
+			}else{ 
+				System.out.println(ID+ ": right is blocked");
 				numberOfAvoidedCollisions++;
 				return false;
 			}
@@ -195,6 +250,7 @@ public class Agent {
 			if (matrix[this.position_x][this.position_y+1]!=1 && matrix[this.position_x][this.position_y+1]!=2 && matrix[this.position_x][this.position_y+1]!=3 ) {
 				return true;
 			}else{
+				System.out.println(ID+ ": down is blocked");
 				numberOfAvoidedCollisions++;
 				return false;
 			}
@@ -202,6 +258,7 @@ public class Agent {
 			if (matrix[this.position_x-1][this.position_y]!=1 && matrix[this.position_x-1][this.position_y]!=2 && matrix[this.position_x-1][this.position_y]!=3) {
 				return true;
 			}else{
+				System.out.println(ID+ ": left is blocked");
 				numberOfAvoidedCollisions++;
 				return false;
 			}
@@ -209,11 +266,11 @@ public class Agent {
 			if (matrix[this.position_x][this.position_y-1]!=1 && matrix[this.position_x][this.position_y-1]!=2 && matrix[this.position_x][this.position_y-1]!=3) {
 				return true;
 			}else{
+				System.out.println(ID+ ": up is blocked");
 				numberOfAvoidedCollisions++;
 				return false;
 				}
 			}
-		numberOfAvoidedCollisions++;
 		return false;		
 	}
 	

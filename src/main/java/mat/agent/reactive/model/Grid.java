@@ -196,11 +196,7 @@ public class Grid {
 		    System.out.println();
 		}
 	}
-	
-//	public static void main(String[] args) {
-//		Grid grid = new Grid(7, 7, IdlingZones.RANDOM_BORDER, 5);
-//
-//	}
+
 	private void logGridData(int sizeX, int sizeY, int numberOfIdlingZones, String distribution) {
 		logger.info("Grid - Size x:" + sizeX + "," + "Size y:" + sizeY + "," +
 		"Number of idling zones:" + numberOfIdlingZones + "," +
