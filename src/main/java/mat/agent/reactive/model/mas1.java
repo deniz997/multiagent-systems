@@ -27,13 +27,14 @@ public class mas1{
 	
 	public static void main(String[] args) {
 		mas1 mas = new mas1();
-		mas.grid.matrixInitialStatus=mas.grid.matrix;
-		
+
 		mas.orders.add(new Order());
 		mas.orders.add(new Order());
 
 		mas.agents.add(new Agent(1, 1,1));
-//		mas.agents.add(new Agent(2, 2,2));
+		mas.agents.add(new Agent(2, 2,2));
+		mas.agents.add(new Agent(3, 3,3));
+
 		mas.logGeneralInfo();
 		for (int i = 0; i < mas.numberOfTimesteps; i++) {
 			//give free agents orders

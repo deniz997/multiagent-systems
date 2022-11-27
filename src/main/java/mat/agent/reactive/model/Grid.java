@@ -39,6 +39,7 @@ public class Grid {
 		this.init();
 		this.fillIdlingZonesList();
 		this.printMatrix();
+		this.copyToInitial();
 	}
 	
 	private void fillIdlingZonesList() {
@@ -194,6 +195,16 @@ public class Grid {
 		        System.out.print(matrix[x][y] + " ");
 		    }
 		    System.out.println();
+		}
+	}
+
+	public void copyToInitial() {
+		for (int y = 0; y < size_y; y++) {
+			for (int x = 0; x < size_x; x++) {
+				int field;
+				field = matrix[x][y];
+				matrixInitialStatus[x][y] = field;
+			}
 		}
 	}
 
