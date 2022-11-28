@@ -1,5 +1,7 @@
 package mat.agent.reactive;
 
+import mat.agent.reactive.model.Coordinate;
+import mat.agent.reactive.model.Order;
 import mat.agent.reactive.model.Warehouse;
 import org.json.JSONObject;
 
@@ -33,8 +35,18 @@ public class ConfigLoader {
         try {
             JSONObject json = new JSONObject(jsonText.get());
 
-            Warehouse setup = new Warehouse();
-            setup.setSize((int) Objects.requireNonNull(json.get("size")));
+            int sizeX = (int) Objects.requireNonNull(json.get("sizeX"));
+            int sizeY = (int) Objects.requireNonNull(json.get("sizeY"));
+
+            // TODO: Assert enough idling zones are provided (>= count agents)
+
+            Warehouse setup = new Warehouse(sizeX, sizeY);
+            setup.setDropZones(new Coordinate(2, 0));
+            setup.setIdlingZones(new Coordinate(3, 0));
+            setup.spawnAgents(new Coordinate(0, 0), new Coordinate(1, 1), new Coordinate(6, 6), new Coordinate(4, 4));
+            Order order1 = new Order(new Coordinate(3, 3), new Coordinate(3, 5));
+            Order order2 = new Order(new Coordinate(5, 3), new Coordinate(4, 5));
+            setup.placeOrders(order1, order2);
 
             return Optional.of(setup);
         } catch(NullPointerException e) {

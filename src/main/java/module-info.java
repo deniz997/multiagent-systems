@@ -7,4 +7,6 @@ module mat.agent.reactive {
     opens mat.agent.reactive to javafx.fxml;
     exports mat.agent.reactive;
     exports mat.agent.reactive.model;
+    exports mat.agent.reactive.controller;
+    opens mat.agent.reactive.controller to javafx.fxml;
 }
