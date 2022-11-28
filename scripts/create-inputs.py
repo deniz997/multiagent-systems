@@ -55,7 +55,7 @@ def generate_robot_coordinates(num_robots):
     return []
 
 def generate_drop_zone_coordinates(num_drop_zones):
-    # Place drop zones at random free places
+    # Place drop zones
     print("Not implemented yet")
 
     return []

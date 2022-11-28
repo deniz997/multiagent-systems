@@ -31,58 +31,90 @@ public class Agent {
         }
     }
 
-    // TODO: More intelligent path finding, maybe Dijkstra
-    public void moveTo(Coordinate coordinate) {
-        Coordinate proposedCoordinate = new Coordinate(currentPos.x, currentPos.y);
+    public void setCurrentPosX(int x) {
+        if (warehouse.isInBounds(new Coordinate(x, currentPos.y))) {
+            this.currentPos.x = x;
+        }
+    }
 
-        if (currentPos.x > coordinate.x) {
-            proposedCoordinate.x -= 1;
-        } else if (currentPos.x < coordinate.x) {
-            proposedCoordinate.x += 1;
-        } else if (currentPos.y > coordinate.y) {
-            proposedCoordinate.y -= 1;
-        } else if (currentPos.y < coordinate.y) {
-            proposedCoordinate.y += 1;
+    public void setCurrentPosY(int y) {
+        if (warehouse.isInBounds(new Coordinate(currentPos.x, y))) {
+            this.currentPos.y = y;
+        }
+    }
+
+    // WIP
+    public void moveTo(Coordinate coordinate) {
+        int moveX = 0;
+        int moveY = 0;
+
+        if (currentPos.x > coordinate.x && !warehouse.isCollision(new Coordinate(currentPos.x - 1, currentPos.y))) {
+            moveX -= 1;
+        } else if (currentPos.x < coordinate.x && !warehouse.isCollision(new Coordinate(currentPos.x + 1, currentPos.y))) {
+            moveX += 1;
+        }
+        if (currentPos.y > coordinate.y && !warehouse.isCollision(new Coordinate(currentPos.x, currentPos.y - 1))) {
+            moveY -= 1;
+        } else if (currentPos.y < coordinate.y && !warehouse.isCollision(new Coordinate(currentPos.x, currentPos.y + 1))) {
+            moveY += 1;
         }
 
-        if (warehouse.isCollision(proposedCoordinate)) {
-            // In case of collision try 10 times to move randomly
-            int counter = 10;
+        // If agent can move in x but also in y we choose randomly what to do
+        if (moveX != 0 && moveY != 0) {
+            int move = new Random().nextInt(2);
 
-            while (counter > 0) {
-                int move = new Random().nextInt(4);
-
-                switch (move) {
-                    case 0:
-                        if (!warehouse.isCollision(new Coordinate(currentPos.x - 1, currentPos.y))) {
-                            currentPos = new Coordinate(currentPos.x - 1, currentPos.y);
-                            return;
-                        }
-                        break;
-                    case 1:
-                        if (!warehouse.isCollision(new Coordinate(currentPos.x + 1, currentPos.y))) {
-                            currentPos = new Coordinate(currentPos.x + 1, currentPos.y);
-                            return;
-                        }
-                        break;
-                    case 2:
-                        if (!warehouse.isCollision(new Coordinate(currentPos.x, currentPos.y - 1))) {
-                            currentPos = new Coordinate(currentPos.x, currentPos.y - 1);
-                            return;
-                        }
-                        break;
-                    case 3:
-                        if (!warehouse.isCollision(new Coordinate(currentPos.x , currentPos.y + 1))) {
-                            currentPos = new Coordinate(currentPos.x, currentPos.y + 1);
-                            return;
-                        }
-                        break;
-                }
-
-                counter--;
+            switch (move) {
+                case 0:
+                    setCurrentPosX(currentPos.x + moveX);
+                    break;
+                case 1:
+                    setCurrentPosY(currentPos.y + moveY);
+                    break;
             }
-        } else {
-            currentPos = proposedCoordinate;
+            return;
+        } else if (moveX != 0) {
+            setCurrentPosX(currentPos.x + moveX);
+            return;
+        } else if (moveY != 0) {
+            setCurrentPosY(currentPos.y + moveY);
+            return;
+        }
+
+
+        // In case of collision in both x and y we try 5 times to move randomly
+        int counter = 5;
+
+        while (counter > 0) {
+            int move = new Random().nextInt(4);
+
+            switch (move) {
+                case 0:
+                    if (!warehouse.isCollision(new Coordinate(currentPos.x - 1, currentPos.y))) {
+                        setCurrentPosX(currentPos.x - 1);
+                        return;
+                    }
+                    break;
+                case 1:
+                    if (!warehouse.isCollision(new Coordinate(currentPos.x + 1, currentPos.y))) {
+                        setCurrentPosX(currentPos.x + 1);
+                        return;
+                    }
+                    break;
+                case 2:
+                    if (!warehouse.isCollision(new Coordinate(currentPos.x, currentPos.y - 1))) {
+                        setCurrentPosY(currentPos.y - 1);
+                        return;
+                    }
+                    break;
+                case 3:
+                    if (!warehouse.isCollision(new Coordinate(currentPos.x, currentPos.y + 1))) {
+                        setCurrentPosY(currentPos.y + 1);
+                        return;
+                    }
+                    break;
+            }
+
+            counter--;
         }
     }
 
@@ -117,11 +149,12 @@ public class Agent {
                 break;
             case GET_PRODUCT:
                 order.getNextCoordinate()
-                        .ifPresent(coordinate ->  moveToCoordinate(coordinate, () -> {
+                        .ifPresent(coordinate -> moveToCoordinate(coordinate, () -> {
                             status = Status.TO_DROP_OFF;
                         }));
                 break;
             case TO_DROP_OFF:
+                // TODO: Maybe go to free status if no drop zone is available
                 warehouse.getClosestZoneOf(Warehouse.GridCellType.DROP_ZONE, currentPos)
                         .ifPresent(coordinate -> moveToCoordinate(coordinate, () -> {
                             order.pop();

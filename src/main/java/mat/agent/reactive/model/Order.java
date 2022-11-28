@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
-public class Order{
+public class Order {
 	 
 	private final List<Coordinate> coordinates;
 	

@@ -102,21 +102,38 @@ public class Warehouse {
         return coordinates;
     }
 
-    public Optional<Coordinate> getClosestZoneOf(GridCellType cellType, Coordinate coordinate) {
-        List<Coordinate> dropOffZones = getCoordinatesOf(cellType);
-        Coordinate currentClosestDropOffZone = null;
-        int currentDelta = Integer.MAX_VALUE;
-
-        for (Coordinate dropOffZone : dropOffZones) {
-            int delta = Math.abs((dropOffZone.x - coordinate.x)) +  Math.abs((dropOffZone.y - coordinate.y));
-
-            if (delta < currentDelta) {
-                currentDelta = delta;
-                currentClosestDropOffZone = dropOffZone;
+    public boolean isCellOccupied(Coordinate coordinate) {
+        for (Coordinate agentCoordinate : getAgentCoordinates()) {
+            if (agentCoordinate.x == coordinate.x && agentCoordinate.y == coordinate.y) {
+                return true;
             }
         }
 
-        return Optional.ofNullable(currentClosestDropOffZone);
+        return false;
+    }
+
+    // Gets the closest zone of given cell type which is not already occupied
+    public Optional<Coordinate> getClosestZoneOf(GridCellType cellType, Coordinate coordinate) {
+        List<Coordinate> zones = getCoordinatesOf(cellType);
+        Coordinate currentClosestZone = null;
+        int currentDelta = Integer.MAX_VALUE;
+
+        for (Coordinate zone : zones) {
+            /**
+             * TODO: Which behavior?
+             * if (isCellOccupied(zone)) {
+                continue;
+            } */
+
+            int delta = Math.abs((zone.x - coordinate.x)) +  Math.abs((zone.y - coordinate.y));
+
+            if (delta < currentDelta) {
+                currentDelta = delta;
+                currentClosestZone = zone;
+            }
+        }
+
+        return Optional.ofNullable(currentClosestZone);
     }
 
     public boolean isCollision(Coordinate coordinate) {
@@ -127,5 +144,9 @@ public class Warehouse {
         }
 
         return false;
+    }
+
+    public boolean isInBounds(Coordinate coordinate) {
+        return coordinate.x >= 0 && coordinate.x < sizeX && coordinate.y >= 0 && coordinate.y < sizeY;
     }
 }

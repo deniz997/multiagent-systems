@@ -72,6 +72,7 @@ public class AppController implements ControllerInterface {
         List<Coordinate> coordinates = warehouse.getAgentCoordinates();
 
         for (Coordinate coordinate : coordinates) {
+            System.out.println(coordinate.y);
             HBox row = (HBox) view.getChildren().get(coordinate.y);
             HBox cell = (HBox) row.getChildren().get(coordinate.x);
             cell.setBackground(createBackground(Color.RED));
