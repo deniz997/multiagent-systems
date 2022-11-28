@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Objects;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Agent {
     private static final Logger logger = LogManager.getLogger(Agent.class);
@@ -13,6 +14,7 @@ public class Agent {
         FREE,
         GET_PRODUCT,
         TO_DROP_OFF,
+        DROPPED_OFF,
         TO_IDLING_ZONE
     }
 
@@ -139,7 +141,7 @@ public class Agent {
         return Objects.nonNull(order) && order.count() > 0;
     }
 
-    public void react() {
+    public Status react() {
         switch (status) {
             // If status is free and order is pending change into get product
             case FREE:
@@ -154,9 +156,11 @@ public class Agent {
                         }));
                 break;
             case TO_DROP_OFF:
+                AtomicBoolean isDropOff = new AtomicBoolean(false);
                 // TODO: Maybe go to free status if no drop zone is available
                 warehouse.getClosestZoneOf(Warehouse.GridCellType.DROP_ZONE, currentPos)
                         .ifPresent(coordinate -> moveToCoordinate(coordinate, () -> {
+                            isDropOff.set(true);
                             order.pop();
 
                             if (hasOrder()) {
@@ -165,6 +169,11 @@ public class Agent {
                                 status = Status.TO_IDLING_ZONE;
                             }
                         }));
+
+                if (isDropOff.get()) {
+                    isDropOff.set(false);
+                    return Status.DROPPED_OFF;
+                }
                 break;
             case TO_IDLING_ZONE:
                 warehouse.getClosestZoneOf(Warehouse.GridCellType.IDLING_ZONE, currentPos)
@@ -173,6 +182,8 @@ public class Agent {
                         }));
                 break;
         }
+
+        return status;
     }
 
     public Coordinate getCoordinate() {

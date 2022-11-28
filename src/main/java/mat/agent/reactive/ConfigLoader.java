@@ -42,7 +42,7 @@ public class ConfigLoader {
 
             Warehouse setup = new Warehouse(sizeX, sizeY);
             setup.setDropZones(new Coordinate(2, 0));
-            setup.setIdlingZones(new Coordinate(3, 0));
+            setup.setIdlingZones(new Coordinate(3, 0), new Coordinate(7, 7));
             setup.spawnAgents(new Coordinate(0, 0), new Coordinate(1, 1), new Coordinate(6, 6), new Coordinate(4, 4));
             Order order1 = new Order(new Coordinate(3, 3), new Coordinate(3, 5));
             Order order2 = new Order(new Coordinate(5, 3), new Coordinate(4, 5));

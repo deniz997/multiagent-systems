@@ -119,11 +119,9 @@ public class Warehouse {
         int currentDelta = Integer.MAX_VALUE;
 
         for (Coordinate zone : zones) {
-            /**
-             * TODO: Which behavior?
-             * if (isCellOccupied(zone)) {
+             if (isCellOccupied(zone)) {
                 continue;
-            } */
+            }
 
             int delta = Math.abs((zone.x - coordinate.x)) +  Math.abs((zone.y - coordinate.y));
 

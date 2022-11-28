@@ -78,4 +78,4 @@ input["coordinates"]["drop_zones"] = generate_drop_zone_coordinates(drop_zones)
 
 print(json.dumps(input))
 
-print("Creating inputs files..")
+print("Creating input file..")
