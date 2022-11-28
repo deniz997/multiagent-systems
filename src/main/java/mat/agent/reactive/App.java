@@ -40,7 +40,7 @@ public class App extends javafx.application.Application {
         Parent root = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("view.fxml")));
         AppController appController = new AppController(root);
         appController.buildGrid(warehouse.get());
-        Scene scene = new Scene(root, 800, 600);
+        Scene scene = new Scene(root, 800, 800);
         stage.setTitle("MAS Homework 1");
         stage.setScene(scene);
         stage.show();
@@ -90,7 +90,7 @@ public class App extends javafx.application.Application {
         cleanup();
         logger.info("Took " + stepCount + " steps");
         float passTroughPerStepCount = (passTrough / (float) stepCount);
-        logger.info(passTroughPerStepCount + " dropped of orders per " + PASS_TROUGH_INTERVAL + " time steps");
+        logger.info("Average of " + passTroughPerStepCount + " dropped of orders per " + PASS_TROUGH_INTERVAL + " time steps");
         logger.info("Stopping application..");
     }
 

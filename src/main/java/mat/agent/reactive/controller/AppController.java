@@ -30,6 +30,8 @@ public class AppController implements ControllerInterface {
         HBox cell = new HBox();
         cell.setPrefHeight(30);
         cell.setPrefWidth(30);
+        cell.setMaxHeight(30);
+        cell.setMaxWidth(30);
 
         return cell;
     }

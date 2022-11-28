@@ -11,6 +11,8 @@ import java.util.Optional;
 import java.util.Scanner;
 
 public class ConfigLoader {
+    // TODO: Load multiple input files from experiment folder
+
     private static final String WAREHOUSE_SETUP_FILE_NAME = "input.json";
 
     private static Optional<String> loadFile(String filePath) {

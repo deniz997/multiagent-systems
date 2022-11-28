@@ -81,7 +81,7 @@ public class Agent {
             setCurrentPosY(currentPos.y + moveY);
             return;
         }
-
+        logger.warn("Collision");
 
         // In case of collision in both x and y we try 5 times to move randomly
         int counter = 5;

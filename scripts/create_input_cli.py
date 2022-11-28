@@ -3,6 +3,8 @@ import argparse
 
 from enum import Enum
 
+# TODO: Import create_input
+
 class Strategy(Enum):
     RANDOM_BORDER = 'RANDOM_BORDER'
     RANDOM = 'RANDOM'
