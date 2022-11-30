@@ -154,7 +154,8 @@ public class Agent {
             // If status is free and order is pending change into get product
             case FREE:
                 if (hasOrder()) {
-                    pendingCount = new Random().nextInt(2 * (warehouse.getSizeX() + warehouse.getSizeY()));
+                    // TODO: Maybe adjust this parameter
+                    pendingCount = new Random().nextInt(3 * (warehouse.getSizeX() + warehouse.getSizeY()));
                     setStatus(Status.GET_PRODUCT);
                 } else {
                     pendingCount--;
