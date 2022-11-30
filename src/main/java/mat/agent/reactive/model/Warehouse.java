@@ -3,14 +3,23 @@ package mat.agent.reactive.model;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 public class Warehouse {
+    public enum IdlingZoneDistribution {
+        RANDOM_BORDER,
+        RANDOM,
+        NEAREST_BORDER,
+        DISTRIBUTED_BORDER
+    }
+
     public enum GridCellType {
         FREE,
         DROP_ZONE,
         IDLING_ZONE,
     }
 
+    private static final int ORDER_SIZE = 3;
     private final int sizeX;
     private final int sizeY;
     private final GridCellType[][] grid;
@@ -41,37 +50,17 @@ public class Warehouse {
         return grid;
     }
 
-    public void setDropZones(Coordinate... coordinates) {
-        for (Coordinate coordinate : coordinates) {
-            grid[coordinate.y][coordinate.x] = GridCellType.DROP_ZONE;
-        }
+    public void addDropZone(Coordinate coordinate) {
+        grid[coordinate.y][coordinate.x] = GridCellType.DROP_ZONE;
     }
 
-    public void setIdlingZones(Coordinate... coordinates) {
-        for (Coordinate coordinate : coordinates) {
-            grid[coordinate.y][coordinate.x] = GridCellType.IDLING_ZONE;
-        }
+    public void addIdlingZone(Coordinate coordinate) {
+        grid[coordinate.y][coordinate.x] = GridCellType.IDLING_ZONE;
     }
 
-    public void spawnAgents(Coordinate... coordinates) {
-        for (Coordinate coordinate : coordinates) {
-            Agent agent = new Agent(this, coordinate);
-            agents.add(agent);
-        }
-    }
-
-    // The order distribution is probably subject to change
-    public void placeOrders(Order... orders) {
-        // Ensure order count is less or equal than agent count
-        if (orders.length > agents.size()) {
-            return;
-        }
-        // abort current process and set new order for each agent
-        for (int i = 0; i < orders.length; i++) {
-            Agent agent = getAgents().get(i);
-            agent.setStatus(Agent.Status.FREE);
-            agent.setOrder(orders[i]);
-        }
+    public void spawnAgent(Coordinate coordinate) {
+        Agent agent = new Agent(this, coordinate);
+        agents.add(agent);
     }
 
     public List<Agent> getAgents() {
@@ -102,16 +91,6 @@ public class Warehouse {
         return coordinates;
     }
 
-    public boolean isCellOccupied(Coordinate coordinate) {
-        for (Coordinate agentCoordinate : getAgentCoordinates()) {
-            if (agentCoordinate.x == coordinate.x && agentCoordinate.y == coordinate.y) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
     // Gets the closest zone of given cell type which is not already occupied
     public Optional<Coordinate> getClosestZoneOf(GridCellType cellType, Coordinate coordinate) {
         List<Coordinate> zones = getCoordinatesOf(cellType);
@@ -119,11 +98,11 @@ public class Warehouse {
         int currentDelta = Integer.MAX_VALUE;
 
         for (Coordinate zone : zones) {
-             if (isCellOccupied(zone)) {
+             if (isCollision(zone)) {
                 continue;
             }
 
-            int delta = Math.abs((zone.x - coordinate.x)) +  Math.abs((zone.y - coordinate.y));
+            int delta = getCoordinateDelta(coordinate, zone);
 
             if (delta < currentDelta) {
                 currentDelta = delta;
@@ -135,6 +114,10 @@ public class Warehouse {
     }
 
     public boolean isCollision(Coordinate coordinate) {
+        if (!isInBounds(coordinate)) {
+            return false;
+        }
+
         for (Agent agent : getAgents()) {
             if (agent.getCoordinate().x == coordinate.x && agent.getCoordinate().y == coordinate.y) {
                 return true;
@@ -146,5 +129,43 @@ public class Warehouse {
 
     public boolean isInBounds(Coordinate coordinate) {
         return coordinate.x >= 0 && coordinate.x < sizeX && coordinate.y >= 0 && coordinate.y < sizeY;
+    }
+
+    public boolean isProductCell(Coordinate coordinate) {
+        return grid[coordinate.y][coordinate.x] == GridCellType.FREE && !isCollision(coordinate);
+    }
+
+    public Coordinate findRandomFreeCell() {
+        while (true) {
+            int x = new Random().nextInt(sizeX);
+            int y = new Random().nextInt(sizeY);
+            Coordinate coordinate = new Coordinate(x, y);
+
+            if (isProductCell(coordinate)) {
+                return coordinate;
+            }
+        }
+    }
+
+    private Order generateOrder() {
+        LinkedList<Coordinate> orderCoordinates = new LinkedList<>();
+
+        for (int i = 0; i < ORDER_SIZE; i++) {
+            orderCoordinates.add(findRandomFreeCell());
+        }
+
+        return new Order(orderCoordinates);
+    }
+
+    public void distributeOrders() {
+        for (Agent agent : getAgents()) {
+            if (agent.canReceiveOrder()) {
+                agent.setOrder(generateOrder());
+            }
+        }
+    }
+
+    public int getCoordinateDelta(Coordinate coordinate1, Coordinate coordinate2) {
+        return Math.abs((coordinate1.x - coordinate2.x)) +  Math.abs((coordinate1.y - coordinate2.y));
     }
 }

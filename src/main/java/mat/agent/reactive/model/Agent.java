@@ -4,17 +4,20 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Agent {
     private static final Logger logger = LogManager.getLogger(Agent.class);
+    private int pendingCount = 0;
+    private Coordinate freeRandomCell;
 
     public enum Status {
         FREE,
         GET_PRODUCT,
         TO_DROP_OFF,
-        DROPPED_OFF,
+        FINISHED_ORDER,
         TO_IDLING_ZONE
     }
 
@@ -45,7 +48,10 @@ public class Agent {
         }
     }
 
-    // WIP
+    public boolean canReceiveOrder() {
+        return pendingCount <= 0;
+    }
+
     public void moveTo(Coordinate coordinate) {
         int moveX = 0;
         int moveY = 0;
@@ -83,8 +89,8 @@ public class Agent {
         }
         logger.warn("Collision");
 
-        // In case of collision in both x and y we try 5 times to move randomly
-        int counter = 5;
+        // In case of collision in both x and y we try 10 times to move randomly
+        int counter = 10;
 
         while (counter > 0) {
             int move = new Random().nextInt(4);
@@ -118,6 +124,8 @@ public class Agent {
 
             counter--;
         }
+
+        logger.info("Stuck");
     }
 
     private void moveToCoordinate(Coordinate coordinate, Runnable successCallback) {
@@ -146,7 +154,10 @@ public class Agent {
             // If status is free and order is pending change into get product
             case FREE:
                 if (hasOrder()) {
+                    pendingCount = new Random().nextInt(2 * (warehouse.getSizeX() + warehouse.getSizeY()));
                     setStatus(Status.GET_PRODUCT);
+                } else {
+                    pendingCount--;
                 }
                 break;
             case GET_PRODUCT:
@@ -156,30 +167,47 @@ public class Agent {
                         }));
                 break;
             case TO_DROP_OFF:
-                AtomicBoolean isDropOff = new AtomicBoolean(false);
-                // TODO: Maybe go to free status if no drop zone is available
-                warehouse.getClosestZoneOf(Warehouse.GridCellType.DROP_ZONE, currentPos)
-                        .ifPresent(coordinate -> moveToCoordinate(coordinate, () -> {
-                            isDropOff.set(true);
-                            order.pop();
+                AtomicBoolean isFinishedOrder = new AtomicBoolean(false);
+                Optional<Coordinate> nextDropZone = warehouse.getClosestZoneOf(Warehouse.GridCellType.DROP_ZONE, currentPos);
 
-                            if (hasOrder()) {
-                                status = Status.GET_PRODUCT;
-                            } else {
-                                status = Status.TO_IDLING_ZONE;
-                            }
-                        }));
+                nextDropZone.ifPresent(coordinate -> moveToCoordinate(coordinate, () -> {
+                    order.pop();
 
-                if (isDropOff.get()) {
-                    isDropOff.set(false);
-                    return Status.DROPPED_OFF;
+                    if (hasOrder()) {
+                        status = Status.GET_PRODUCT;
+                    } else {
+                        isFinishedOrder.set(true);
+                        status = Status.TO_IDLING_ZONE;
+                    }
+                }));
+
+                if (isFinishedOrder.get()) {
+                    isFinishedOrder.set(false);
+                    return Status.FINISHED_ORDER;
                 }
                 break;
             case TO_IDLING_ZONE:
-                warehouse.getClosestZoneOf(Warehouse.GridCellType.IDLING_ZONE, currentPos)
-                        .ifPresent(coordinate -> moveToCoordinate(coordinate, () -> {
+                pendingCount--;
+                Optional<Coordinate> nextIdlingZone = warehouse.getClosestZoneOf(Warehouse.GridCellType.IDLING_ZONE, currentPos);
+
+                if (nextIdlingZone.isPresent()) {
+                    moveToCoordinate(nextIdlingZone.get(), () -> {
+                        logger.info("In idling zone");
+                        status = Status.FREE;
+                    });
+                } else {
+                    logger.info("No idling zone available");
+                    // Move to random free coordinate when no idling zone is available, constantly check if coordinate is free
+                    if (Objects.nonNull(freeRandomCell) && warehouse.isProductCell(freeRandomCell)) {
+                        moveToCoordinate(freeRandomCell, () -> {
                             status = Status.FREE;
-                        }));
+                            freeRandomCell = null;
+                        });
+                    } else {
+                        freeRandomCell = warehouse.findRandomFreeCell();
+                    }
+                }
+
                 break;
         }
 

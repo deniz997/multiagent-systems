@@ -8,8 +8,8 @@ public class Order {
 	 
 	private final List<Coordinate> coordinates;
 	
-	public Order(Coordinate... coordinates) {
-		this.coordinates = new LinkedList<>(Arrays.asList(coordinates));
+	public Order(LinkedList<Coordinate> coordinates) {
+		this.coordinates = coordinates;
 	}
 
 	public int count() {
