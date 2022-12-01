@@ -68,7 +68,7 @@ public class AppController implements ControllerInterface {
                         break;
                 }
             }
-        }
+        };
 
         // Commit agent states
         List<Coordinate> coordinates = warehouse.getAgentCoordinates();

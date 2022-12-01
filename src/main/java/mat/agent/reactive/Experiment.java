@@ -15,7 +15,7 @@ import java.util.*;
 
 public class Experiment {
     private static final Logger logger = LogManager.getLogger(Experiment.class);
-    private static final int TIME_STEP_PERIOD_IN_MS = 10;
+    private static final int TIME_STEP_PERIOD_IN_MS = 5000;
     private final int PASS_TROUGH_INTERVAL = 10;
     private final int STEP_COUNT_THRESHOLD = 1000;
     private int passTroughBuffer = 0;
@@ -160,6 +160,12 @@ public class Experiment {
                 break;
             case RANDOM_BORDER:
                 while (count > 0) {
+                    // Break early if all border cells are occupied
+                    int idlingZoneCount = warehouse.getCoordinatesOf(Warehouse.GridCellType.IDLING_ZONE).size();
+                    if (idlingZoneCount >= 2 * (warehouse.getSizeX() - 1) + 2 * (warehouse.getSizeY() - 1) - ((warehouse.getSizeX() / 2) + 1)) {
+                        break;
+                    }
+
                     warehouse.addIdlingZone(findFreeBorderCoordinate(warehouse));
                     count--;
                 }
@@ -168,6 +174,10 @@ public class Experiment {
                 // Place idling zones as close as possible to the drop zones
                 while (count > 0) {
                     Optional<Coordinate> coordinate = findClosestFreeBorderCell(warehouse, new Coordinate(0, 0));
+                    coordinate.ifPresent(warehouse::addIdlingZone);
+                    count--;
+
+                    coordinate = findClosestFreeBorderCell(warehouse, new Coordinate((warehouse.getSizeX() - 1) / 2, 0));
                     coordinate.ifPresent(warehouse::addIdlingZone);
                     count--;
 
