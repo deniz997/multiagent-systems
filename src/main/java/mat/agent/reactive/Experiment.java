@@ -15,7 +15,7 @@ import java.util.*;
 
 public class Experiment {
     private static final Logger logger = LogManager.getLogger(Experiment.class);
-    private static final int TIME_STEP_PERIOD_IN_MS = 5000;
+    private static final int TIME_STEP_PERIOD_IN_MS = 50;
     private final int PASS_TROUGH_INTERVAL = 10;
     private final int STEP_COUNT_THRESHOLD = 1000;
     private int passTroughBuffer = 0;
@@ -92,59 +92,6 @@ public class Experiment {
         return Optional.ofNullable(minCoordinate);
     }
 
-    private Optional<Coordinate> findClosestFreeBorderCellWithAtLeastOneDelta(Warehouse warehouse, Coordinate coordinate) {
-        int minDelta = Integer.MAX_VALUE;
-        Coordinate minCoordinate = null;
-
-        // Traverse top and bottom border
-        for (int x = 0; x < warehouse.getSizeX(); x++) {
-            Coordinate top = new Coordinate(x, 0);
-            Coordinate bottom = new Coordinate(x, warehouse.getSizeY() - 1);
-
-            if (warehouse.isProductCell(top)) {
-                int delta = warehouse.getCoordinateDelta(coordinate, top);
-
-                if (delta < minDelta && delta > 1 && top.x > coordinate.x && top.y == coordinate.y) {
-                    minDelta = delta;
-                    minCoordinate = top;
-                }
-            }
-
-            if (warehouse.isProductCell(bottom)) {
-                int delta = warehouse.getCoordinateDelta(coordinate, bottom);
-
-                if (delta < minDelta && delta > 1 && bottom.x > coordinate.x && bottom.y == coordinate.y) {
-                    minDelta = delta;
-                    minCoordinate = bottom;
-                }
-            }
-        }
-
-        // Traverse left and right border
-        for (int y = 0; y < warehouse.getSizeY(); y++) {
-            Coordinate left = new Coordinate(0, y);
-            Coordinate right = new Coordinate(warehouse.getSizeX() - 1, y);
-
-            if (warehouse.isProductCell(left)) {
-                int delta = warehouse.getCoordinateDelta(coordinate, left);
-                if (delta < minDelta && delta > 1 && left.y > coordinate.y && left.x == coordinate.x) {
-                    minDelta = delta;
-                    minCoordinate = left;
-                }
-            }
-
-            if (warehouse.isProductCell(right)) {
-                int delta = warehouse.getCoordinateDelta(coordinate, right);
-                if (delta < minDelta && delta > 1 && right.y > coordinate.y && right.x == coordinate.x) {
-                    minDelta = delta;
-                    minCoordinate = right;
-                }
-            }
-        }
-
-        return Optional.ofNullable(minCoordinate);
-    }
-
     private void addDropZones(Warehouse warehouse) {
         for (int i = 0; i < (warehouse.getSizeX() / 2) + 1; i++) {
             warehouse.addDropZone(new Coordinate(i * 2, 0));
@@ -172,12 +119,33 @@ public class Experiment {
                 break;
             case NEAREST_BORDER:
                 // Place idling zones as close as possible to the drop zones
-                while (count > 0) {
-                    Optional<Coordinate> coordinate = findClosestFreeBorderCell(warehouse, new Coordinate(0, 0));
-                    coordinate.ifPresent(warehouse::addIdlingZone);
+
+                // Fill top first
+                int midX = (warehouse.getSizeX() / 2);
+                int midXCounter = (warehouse.getSizeX() / 2);
+                int sign = -1;
+                int i = 0;
+
+                while (midXCounter > 0) {
+                    // Add top
+                    warehouse.addIdlingZone(new Coordinate(midX + sign * i * 2 - 1, 0));
                     count--;
 
-                    coordinate = findClosestFreeBorderCell(warehouse, new Coordinate((warehouse.getSizeX() - 1) / 2, 0));
+                    if (count <= 0) {
+                        break;
+                    }
+
+                    sign = sign * (-1);
+
+                    if (sign == -1) {
+                        i++;
+                    }
+
+                    midXCounter--;
+                }
+
+                while (count > 0) {
+                    Optional<Coordinate> coordinate = findClosestFreeBorderCell(warehouse, new Coordinate(0, 0));
                     coordinate.ifPresent(warehouse::addIdlingZone);
                     count--;
 
@@ -188,51 +156,54 @@ public class Experiment {
 
                 break;
             case DISTRIBUTED_BORDER:
-                int zonesPerBorder = count / 3;
-                int rest = count % 3;
-                int startX = (int) Math.floor((warehouse.getSizeX() - 1.0) / zonesPerBorder - 1);
-                Optional<Coordinate> lastCoordinate = findClosestFreeBorderCellWithAtLeastOneDelta(warehouse, new Coordinate(startX, 0));
-                lastCoordinate.ifPresent(warehouse::addIdlingZone);
+                midX = (warehouse.getSizeX() / 2);
+                int midY = (warehouse.getSizeY() / 2);
+                i = 0;
+                sign = -1;
 
-                // top
-                for (int i = 1; i < zonesPerBorder + rest; i++) {
-                    if (lastCoordinate.isPresent()) {
-                        lastCoordinate = findClosestFreeBorderCellWithAtLeastOneDelta(warehouse, lastCoordinate.get());
-                        lastCoordinate.ifPresent(warehouse::addIdlingZone);
-                 }
-                }
+                while (count > 0) {
+                    // Add top
+                    warehouse.addIdlingZone(new Coordinate(midX + sign * i * 2 - 1, 0));
+                    count--;
 
-                lastCoordinate = findClosestFreeBorderCellWithAtLeastOneDelta(warehouse, new Coordinate(startX, warehouse.getSizeY() - 1));
-                lastCoordinate.ifPresent(warehouse::addIdlingZone);
-
-                // bottom
-                for (int i = 1; i < zonesPerBorder + rest; i++) {
-                    if (lastCoordinate.isPresent()) {
-                        lastCoordinate = findClosestFreeBorderCellWithAtLeastOneDelta(warehouse, lastCoordinate.get());
-                        lastCoordinate.ifPresent(warehouse::addIdlingZone);
+                    if (count <= 0) {
+                        break;
                     }
-                }
 
-                int startY = (int) Math.floor((warehouse.getSizeY() - 1.0) / zonesPerBorder - 1);
-                lastCoordinate = findClosestFreeBorderCellWithAtLeastOneDelta(warehouse, new Coordinate(0, startY));
-                lastCoordinate.ifPresent(warehouse::addIdlingZone);
-
-                // left
-                for (int i = 1; i < zonesPerBorder; i++) {
-                    if (lastCoordinate.isPresent()) {
-                        lastCoordinate = findClosestFreeBorderCellWithAtLeastOneDelta(warehouse, lastCoordinate.get());
-                        lastCoordinate.ifPresent(warehouse::addIdlingZone);
+                    // Add left
+                    Coordinate left = new Coordinate(0, midY + sign * i * 2);
+                    if (left.y != 0) {
+                        warehouse.addIdlingZone(left);
                     }
-                }
+                    count--;
 
-                lastCoordinate = findClosestFreeBorderCellWithAtLeastOneDelta(warehouse, new Coordinate(warehouse.getSizeX() - 1, startY));
-                lastCoordinate.ifPresent(warehouse::addIdlingZone);
+                    if (count <= 0) {
+                        break;
+                    }
 
-                // right
-                for (int i = 1; i < zonesPerBorder; i++) {
-                    if (lastCoordinate.isPresent()) {
-                        lastCoordinate = findClosestFreeBorderCellWithAtLeastOneDelta(warehouse, lastCoordinate.get());
-                        lastCoordinate.ifPresent(warehouse::addIdlingZone);
+                    // Add right
+                    Coordinate right = new Coordinate(warehouse.getSizeX() - 1, midY + sign * i * 2);
+                    if (right.y != 0) {
+                        warehouse.addIdlingZone(right);
+                    }
+                    count--;
+
+                    if (count <= 0) {
+                        break;
+                    }
+
+                    // Add bottom
+                    warehouse.addIdlingZone(new Coordinate(midX + sign * i * 2, warehouse.getSizeY() - 1));
+                    count--;
+
+                    if (count <= 0) {
+                        break;
+                    }
+
+                    sign = sign * (-1);
+
+                    if (sign == -1) {
+                        i++;
                     }
                 }
 

@@ -51,11 +51,15 @@ public class Warehouse {
     }
 
     public void addDropZone(Coordinate coordinate) {
-        grid[coordinate.y][coordinate.x] = GridCellType.DROP_ZONE;
+        if (isInBounds(coordinate)) {
+            grid[coordinate.y][coordinate.x] = GridCellType.DROP_ZONE;
+        }
     }
 
     public void addIdlingZone(Coordinate coordinate) {
-        grid[coordinate.y][coordinate.x] = GridCellType.IDLING_ZONE;
+        if (isInBounds(coordinate)) {
+            grid[coordinate.y][coordinate.x] = GridCellType.IDLING_ZONE;
+        }
     }
 
     public void spawnAgent(Coordinate coordinate) {

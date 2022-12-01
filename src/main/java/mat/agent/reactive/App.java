@@ -19,7 +19,7 @@ public class App extends javafx.application.Application {
         logger.info("Starting application..");
         Parent root = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("view.fxml")));
         int agentCount = 150;
-        int idlingZoneCount = (int) (agentCount*1);
+        int idlingZoneCount = (int) (agentCount*0.5);
         experiment = new Experiment(stage, root);
         ExperimentCase experimentCase = new ExperimentCase();
         experimentCase
@@ -27,7 +27,7 @@ public class App extends javafx.application.Application {
                 .setIdlingZoneCount(idlingZoneCount)
                 .setSizeX(41)
                 .setSizeY(41)
-                .setIdlingZoneDistribution(Warehouse.IdlingZoneDistribution.RANDOM_BORDER);
+                .setIdlingZoneDistribution(Warehouse.IdlingZoneDistribution.DISTRIBUTED_BORDER);
         experiment.setCase(experimentCase);
         experiment.run();
     }
