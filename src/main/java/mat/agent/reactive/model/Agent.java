@@ -87,7 +87,7 @@ public class Agent {
             setCurrentPosY(currentPos.y + moveY);
             return;
         }
-        logger.warn("Collision");
+        //logger.warn("Collision");
 
         // In case of collision in both x and y we try 10 times to move randomly
         int counter = 10;
@@ -125,7 +125,7 @@ public class Agent {
             counter--;
         }
 
-        logger.info("Stuck");
+        //logger.info("Stuck");
     }
 
     private void moveToCoordinate(Coordinate coordinate, Runnable successCallback) {
@@ -193,11 +193,11 @@ public class Agent {
 
                 if (nextIdlingZone.isPresent()) {
                     moveToCoordinate(nextIdlingZone.get(), () -> {
-                        logger.info("In idling zone");
+                        //logger.info("In idling zone");
                         status = Status.FREE;
                     });
                 } else {
-                    logger.info("No idling zone available");
+                    //logger.info("No idling zone available");
                     // Move to random free coordinate when no idling zone is available, constantly check if coordinate is free
                     if (Objects.nonNull(freeRandomCell) && warehouse.isProductCell(freeRandomCell)) {
                         moveToCoordinate(freeRandomCell, () -> {

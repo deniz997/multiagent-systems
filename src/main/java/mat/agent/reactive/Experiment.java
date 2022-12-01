@@ -289,7 +289,7 @@ public class Experiment {
                     }
 
                     if (stepCount % PASS_TROUGH_INTERVAL == 0) {
-                        logger.info(passTroughBuffer + " finished orders in " + PASS_TROUGH_INTERVAL + " time steps");
+                        //logger.info(passTroughBuffer + " finished orders in " + PASS_TROUGH_INTERVAL + " time steps");
                         passTroughBuffer = 0;
                     }
 
@@ -305,10 +305,10 @@ public class Experiment {
 
 
     public void exit() {
-        logger.info("Took " + stepCount + " steps");
-        logger.info(passTroughBuffer + " finished orders in " + PASS_TROUGH_INTERVAL + " time steps");
+        //logger.info("Took " + stepCount + " steps");
+        //logger.info(passTroughBuffer + " finished orders in " + PASS_TROUGH_INTERVAL + " time steps");
         float passTroughPerStepCount = (passTrough / (float) stepCount);
-        logger.info("Result - Average completed orders per " + PASS_TROUGH_INTERVAL + " time steps:" + passTroughPerStepCount);
+        logger.info("Result - Total completed orders:" + passTrough + "," + "Average completed orders:" + PASS_TROUGH_INTERVAL + "," + "For time steps count:" + passTroughPerStepCount);
         stop();
         Platform.exit();
         System.exit(0);

@@ -18,17 +18,17 @@ public class App extends javafx.application.Application {
     public void start(Stage stage) throws IOException {
         logger.info("Starting application..");
         Parent root = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("view.fxml")));
-
+        int agentCount = 150;
+        int idlingZoneCount = (int) (agentCount*1);
         experiment = new Experiment(stage, root);
         ExperimentCase experimentCase = new ExperimentCase();
         experimentCase
-                .setAgentCount(100)
-                .setIdlingZoneCount(50)
-                .setSizeX(21)
-                .setSizeY(21)
-                .setIdlingZoneDistribution(Warehouse.IdlingZoneDistribution.RANDOM);
+                .setAgentCount(agentCount)
+                .setIdlingZoneCount(idlingZoneCount)
+                .setSizeX(41)
+                .setSizeY(41)
+                .setIdlingZoneDistribution(Warehouse.IdlingZoneDistribution.RANDOM_BORDER);
         experiment.setCase(experimentCase);
-
         experiment.run();
     }
 
