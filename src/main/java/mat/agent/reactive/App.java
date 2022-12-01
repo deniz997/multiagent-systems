@@ -25,9 +25,9 @@ public class App extends javafx.application.Application {
         experimentCase
                 .setAgentCount(agentCount)
                 .setIdlingZoneCount(idlingZoneCount)
-                .setSizeX(41)
-                .setSizeY(41)
-                .setIdlingZoneDistribution(Warehouse.IdlingZoneDistribution.DISTRIBUTED_BORDER);
+                .setSizeX(21)
+                .setSizeY(21)
+                .setIdlingZoneDistribution(Warehouse.IdlingZoneDistribution.RANDOM_BORDER);
         experiment.setCase(experimentCase);
         experiment.run();
     }

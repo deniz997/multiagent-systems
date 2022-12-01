@@ -15,9 +15,9 @@ import java.util.*;
 
 public class Experiment {
     private static final Logger logger = LogManager.getLogger(Experiment.class);
-    private static final int TIME_STEP_PERIOD_IN_MS = 50;
+    private static final int TIME_STEP_PERIOD_IN_MS = 200;
     private final int PASS_TROUGH_INTERVAL = 10;
-    private final int STEP_COUNT_THRESHOLD = 1000;
+    private final int STEP_COUNT_THRESHOLD = 50000;
     private int passTroughBuffer = 0;
     private int passTrough = 0;
     private int stepCount = 0;
@@ -222,12 +222,6 @@ public class Experiment {
     }
 
     public void run() {
-        AppController appController = new AppController(root);
-        Scene scene = new Scene(root, 800, 800);
-        stage.setTitle("MAS Homework 1");
-        stage.setScene(scene);
-        stage.show();
-
         if (Objects.isNull(experimentCase)) {
             return;
         }
@@ -241,7 +235,61 @@ public class Experiment {
         logger.info("Grid - Size x:" + experimentCase.getSizeX() + "," + "Size y:" + experimentCase.getSizeY() + "," +
                 "Number of idling zones:" + experimentCase.getIdlingZoneCount() + "," +
                 "Number of agents:" + experimentCase.getAgentCount() + "," +
-        "Idling zone distribution:" + experimentCase.getIdlingZoneDistribution());
+                "Idling zone distribution:" + experimentCase.getIdlingZoneDistribution());
+
+        while (stepCount <= STEP_COUNT_THRESHOLD) {
+            if (stepCount % 10000 == 0) {
+                System.out.println(stepCount + " steps");
+            }
+
+            stepCount++;
+            List<Agent> agents = warehouse.getAgents();
+            List<Agent.Status> statusList = new LinkedList<>();
+
+            warehouse.distributeOrders();
+
+            for (Agent agent : agents) {
+                statusList.add(agent.react());
+            }
+
+            for (Agent.Status status : statusList) {
+                if (status == Agent.Status.FINISHED_ORDER) {
+                    passTroughBuffer += 1;
+                    passTrough += 1;
+                }
+            }
+
+            if (stepCount % PASS_TROUGH_INTERVAL == 0) {
+                //logger.info(passTroughBuffer + " finished orders in " + PASS_TROUGH_INTERVAL + " time steps");
+                passTroughBuffer = 0;
+            }
+        }
+
+        exit();
+    }
+
+    public void runGui() {
+        if (Objects.isNull(experimentCase)) {
+            return;
+        }
+
+        Warehouse warehouse = new Warehouse(experimentCase.getSizeX(), experimentCase.getSizeY());
+        addDropZones(warehouse);
+        addIdlingZones(warehouse, experimentCase.getIdlingZoneDistribution(), experimentCase.getIdlingZoneCount());
+        // Important to add agents last
+        addAgents(warehouse, experimentCase.getAgentCount());
+
+        logger.info("Grid - Size x:" + experimentCase.getSizeX() + "," + "Size y:" + experimentCase.getSizeY() + "," +
+                "Number of idling zones:" + experimentCase.getIdlingZoneCount() + "," +
+                "Number of agents:" + experimentCase.getAgentCount() + "," +
+                "Idling zone distribution:" + experimentCase.getIdlingZoneDistribution());
+
+        AppController appController = new AppController(root);
+        Scene scene = new Scene(root, 800, 800);
+        stage.setTitle("MAS Homework 1");
+        stage.setScene(scene);
+        stage.show();
+
 
         appController.buildGrid(warehouse);
 
@@ -289,7 +337,7 @@ public class Experiment {
         //logger.info("Took " + stepCount + " steps");
         //logger.info(passTroughBuffer + " finished orders in " + PASS_TROUGH_INTERVAL + " time steps");
         float passTroughPerStepCount = (passTrough / (float) stepCount);
-        logger.info("Result - Total completed orders:" + passTrough + "," + "Average completed orders:" + PASS_TROUGH_INTERVAL + "," + "For time steps count:" + passTroughPerStepCount);
+        logger.info("Result - Total completed orders:" + passTrough + "," + "Average completed orders:" + passTroughPerStepCount + "," + "For time steps count:" + PASS_TROUGH_INTERVAL);
         stop();
         Platform.exit();
         System.exit(0);
