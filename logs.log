@@ -1,0 +1,481 @@
+[INFO] 2022-12-03 13:07:05.915 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:07:06.060 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:5,Number of agents:20,Idling zone distribution:RANDOM
+[INFO] 2022-12-03 13:07:06.531 [JavaFX Application Thread] Experiment - Result - Total completed orders:1008,Average completed orders:0.10078992,For time steps count:10
+[INFO] 2022-12-03 13:07:06.531 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:07:27.984 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:07:28.149 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:12,Number of agents:50,Idling zone distribution:RANDOM
+[INFO] 2022-12-03 13:07:29.139 [JavaFX Application Thread] Experiment - Result - Total completed orders:2155,Average completed orders:0.21547845,For time steps count:10
+[INFO] 2022-12-03 13:07:29.140 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:07:37.662 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:07:37.939 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:25,Number of agents:100,Idling zone distribution:RANDOM
+[INFO] 2022-12-03 13:07:41.181 [JavaFX Application Thread] Experiment - Result - Total completed orders:3844,Average completed orders:0.38436157,For time steps count:10
+[INFO] 2022-12-03 13:07:41.181 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:07:47.056 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:07:47.223 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:37,Number of agents:150,Idling zone distribution:RANDOM
+[INFO] 2022-12-03 13:07:53.820 [JavaFX Application Thread] Experiment - Result - Total completed orders:4320,Average completed orders:0.4319568,For time steps count:10
+[INFO] 2022-12-03 13:07:53.820 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:08:00.305 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:08:00.486 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:50,Number of agents:200,Idling zone distribution:RANDOM
+[INFO] 2022-12-03 13:08:11.332 [JavaFX Application Thread] Experiment - Result - Total completed orders:2828,Average completed orders:0.28277174,For time steps count:10
+[INFO] 2022-12-03 13:08:11.332 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:08:23.615 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:08:23.784 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:10,Number of agents:20,Idling zone distribution:RANDOM
+[INFO] 2022-12-03 13:08:24.341 [JavaFX Application Thread] Experiment - Result - Total completed orders:1000,Average completed orders:0.09999,For time steps count:10
+[INFO] 2022-12-03 13:08:24.342 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:08:30.945 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:08:31.107 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:25,Number of agents:50,Idling zone distribution:RANDOM
+[INFO] 2022-12-03 13:08:32.104 [JavaFX Application Thread] Experiment - Result - Total completed orders:2245,Average completed orders:0.22447756,For time steps count:10
+[INFO] 2022-12-03 13:08:32.104 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:08:39.730 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:08:39.889 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:50,Number of agents:100,Idling zone distribution:RANDOM
+[INFO] 2022-12-03 13:08:42.689 [JavaFX Application Thread] Experiment - Result - Total completed orders:3615,Average completed orders:0.36146384,For time steps count:10
+[INFO] 2022-12-03 13:08:42.690 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:08:49.177 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:08:49.339 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:75,Number of agents:150,Idling zone distribution:RANDOM
+[INFO] 2022-12-03 13:08:55.762 [JavaFX Application Thread] Experiment - Result - Total completed orders:3747,Average completed orders:0.37466255,For time steps count:10
+[INFO] 2022-12-03 13:08:55.762 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:09:04.420 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:09:04.561 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:100,Number of agents:200,Idling zone distribution:RANDOM
+[INFO] 2022-12-03 13:09:15.810 [JavaFX Application Thread] Experiment - Result - Total completed orders:2512,Average completed orders:0.2511749,For time steps count:10
+[INFO] 2022-12-03 13:09:15.810 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:09:26.703 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:09:26.841 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:20,Number of agents:20,Idling zone distribution:RANDOM
+[INFO] 2022-12-03 13:09:27.184 [JavaFX Application Thread] Experiment - Result - Total completed orders:1089,Average completed orders:0.10888911,For time steps count:10
+[INFO] 2022-12-03 13:09:27.184 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:09:35.031 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:09:35.192 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:50,Number of agents:50,Idling zone distribution:RANDOM
+[INFO] 2022-12-03 13:09:36.148 [JavaFX Application Thread] Experiment - Result - Total completed orders:2428,Average completed orders:0.24277572,For time steps count:10
+[INFO] 2022-12-03 13:09:36.148 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:09:44.377 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:09:44.624 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:100,Number of agents:100,Idling zone distribution:RANDOM
+[INFO] 2022-12-03 13:09:48.028 [JavaFX Application Thread] Experiment - Result - Total completed orders:3297,Average completed orders:0.32966703,For time steps count:10
+[INFO] 2022-12-03 13:09:48.029 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:09:52.484 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:09:52.727 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:150,Number of agents:150,Idling zone distribution:RANDOM
+[INFO] 2022-12-03 13:09:59.332 [JavaFX Application Thread] Experiment - Result - Total completed orders:2602,Average completed orders:0.26017398,For time steps count:10
+[INFO] 2022-12-03 13:09:59.332 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:10:03.979 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:10:04.162 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:200,Number of agents:200,Idling zone distribution:RANDOM
+[INFO] 2022-12-03 13:10:15.615 [JavaFX Application Thread] Experiment - Result - Total completed orders:2131,Average completed orders:0.2130787,For time steps count:10
+[INFO] 2022-12-03 13:10:15.616 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:10:34.890 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:10:35.058 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:5,Number of agents:20,Idling zone distribution:DISTRIBUTED_BORDER
+[INFO] 2022-12-03 13:10:35.499 [JavaFX Application Thread] Experiment - Result - Total completed orders:837,Average completed orders:0.083691634,For time steps count:10
+[INFO] 2022-12-03 13:10:35.499 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:10:40.347 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:10:40.510 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:12,Number of agents:50,Idling zone distribution:DISTRIBUTED_BORDER
+[INFO] 2022-12-03 13:10:41.523 [JavaFX Application Thread] Experiment - Result - Total completed orders:2440,Average completed orders:0.24397561,For time steps count:10
+[INFO] 2022-12-03 13:10:41.523 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:10:45.935 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:10:46.094 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:25,Number of agents:100,Idling zone distribution:DISTRIBUTED_BORDER
+[INFO] 2022-12-03 13:10:49.365 [JavaFX Application Thread] Experiment - Result - Total completed orders:3860,Average completed orders:0.3859614,For time steps count:10
+[INFO] 2022-12-03 13:10:49.366 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:11:02.746 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:11:02.917 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:37,Number of agents:150,Idling zone distribution:DISTRIBUTED_BORDER
+[INFO] 2022-12-03 13:11:08.481 [JavaFX Application Thread] Experiment - Result - Total completed orders:3543,Average completed orders:0.3542646,For time steps count:10
+[INFO] 2022-12-03 13:11:08.482 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:11:13.959 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:11:14.130 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:50,Number of agents:200,Idling zone distribution:DISTRIBUTED_BORDER
+[INFO] 2022-12-03 13:11:24.689 [JavaFX Application Thread] Experiment - Result - Total completed orders:2073,Average completed orders:0.20727926,For time steps count:10
+[INFO] 2022-12-03 13:11:24.689 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:11:29.930 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:11:30.069 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:10,Number of agents:20,Idling zone distribution:DISTRIBUTED_BORDER
+[INFO] 2022-12-03 13:11:30.526 [JavaFX Application Thread] Experiment - Result - Total completed orders:914,Average completed orders:0.09139086,For time steps count:10
+[INFO] 2022-12-03 13:11:30.527 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:11:44.943 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:11:45.091 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:25,Number of agents:50,Idling zone distribution:DISTRIBUTED_BORDER
+[INFO] 2022-12-03 13:11:46.078 [JavaFX Application Thread] Experiment - Result - Total completed orders:2407,Average completed orders:0.24067593,For time steps count:10
+[INFO] 2022-12-03 13:11:46.078 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:11:50.393 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:11:50.588 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:50,Number of agents:100,Idling zone distribution:DISTRIBUTED_BORDER
+[INFO] 2022-12-03 13:11:53.366 [JavaFX Application Thread] Experiment - Result - Total completed orders:3880,Average completed orders:0.3879612,For time steps count:10
+[INFO] 2022-12-03 13:11:53.367 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:11:58.148 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:11:58.305 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:75,Number of agents:150,Idling zone distribution:DISTRIBUTED_BORDER
+[INFO] 2022-12-03 13:12:04.799 [JavaFX Application Thread] Experiment - Result - Total completed orders:3377,Average completed orders:0.33766624,For time steps count:10
+[INFO] 2022-12-03 13:12:04.800 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:12:09.845 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:12:10.038 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:100,Number of agents:200,Idling zone distribution:DISTRIBUTED_BORDER
+[INFO] 2022-12-03 13:12:21.081 [JavaFX Application Thread] Experiment - Result - Total completed orders:2058,Average completed orders:0.20577942,For time steps count:10
+[INFO] 2022-12-03 13:12:21.081 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:12:38.294 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:12:38.483 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:20,Number of agents:20,Idling zone distribution:DISTRIBUTED_BORDER
+[INFO] 2022-12-03 13:12:38.991 [JavaFX Application Thread] Experiment - Result - Total completed orders:791,Average completed orders:0.07909209,For time steps count:10
+[INFO] 2022-12-03 13:12:38.992 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:12:45.278 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:12:45.483 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:50,Number of agents:50,Idling zone distribution:DISTRIBUTED_BORDER
+[INFO] 2022-12-03 13:12:46.643 [JavaFX Application Thread] Experiment - Result - Total completed orders:2473,Average completed orders:0.24727528,For time steps count:10
+[INFO] 2022-12-03 13:12:46.644 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:12:52.419 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:12:52.585 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:100,Number of agents:100,Idling zone distribution:DISTRIBUTED_BORDER
+[INFO] 2022-12-03 13:12:56.063 [JavaFX Application Thread] Experiment - Result - Total completed orders:3867,Average completed orders:0.38666132,For time steps count:10
+[INFO] 2022-12-03 13:12:56.063 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:13:11.271 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:13:11.460 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:150,Number of agents:150,Idling zone distribution:DISTRIBUTED_BORDER
+[INFO] 2022-12-03 13:13:19.229 [JavaFX Application Thread] Experiment - Result - Total completed orders:3258,Average completed orders:0.32576743,For time steps count:10
+[INFO] 2022-12-03 13:13:19.230 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:13:30.222 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:13:30.431 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:200,Number of agents:200,Idling zone distribution:DISTRIBUTED_BORDER
+[INFO] 2022-12-03 13:13:43.652 [JavaFX Application Thread] Experiment - Result - Total completed orders:2076,Average completed orders:0.20757924,For time steps count:10
+[INFO] 2022-12-03 13:13:43.653 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:13:49.177 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:13:49.381 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:5,Number of agents:20,Idling zone distribution:NEAREST_BORDER
+[INFO] 2022-12-03 13:13:49.951 [JavaFX Application Thread] Experiment - Result - Total completed orders:1000,Average completed orders:0.09999,For time steps count:10
+[INFO] 2022-12-03 13:13:49.951 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:14:07.621 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:14:07.827 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:12,Number of agents:50,Idling zone distribution:NEAREST_BORDER
+[INFO] 2022-12-03 13:14:09.164 [JavaFX Application Thread] Experiment - Result - Total completed orders:2270,Average completed orders:0.2269773,For time steps count:10
+[INFO] 2022-12-03 13:14:09.164 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:14:15.847 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:14:16.036 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:25,Number of agents:100,Idling zone distribution:NEAREST_BORDER
+[INFO] 2022-12-03 13:14:19.038 [JavaFX Application Thread] Experiment - Result - Total completed orders:3763,Average completed orders:0.37626237,For time steps count:10
+[INFO] 2022-12-03 13:14:19.038 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:14:25.039 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:14:25.251 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:37,Number of agents:150,Idling zone distribution:NEAREST_BORDER
+[INFO] 2022-12-03 13:14:33.551 [JavaFX Application Thread] Experiment - Result - Total completed orders:3441,Average completed orders:0.3440656,For time steps count:10
+[INFO] 2022-12-03 13:14:33.551 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:14:42.624 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:14:42.904 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:50,Number of agents:200,Idling zone distribution:NEAREST_BORDER
+[INFO] 2022-12-03 13:14:55.951 [JavaFX Application Thread] Experiment - Result - Total completed orders:2048,Average completed orders:0.20477952,For time steps count:10
+[INFO] 2022-12-03 13:14:55.952 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:15:02.174 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:15:02.373 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:10,Number of agents:20,Idling zone distribution:NEAREST_BORDER
+[INFO] 2022-12-03 13:15:02.768 [JavaFX Application Thread] Experiment - Result - Total completed orders:1059,Average completed orders:0.10588941,For time steps count:10
+[INFO] 2022-12-03 13:15:02.768 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:15:12.756 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:15:12.956 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:25,Number of agents:50,Idling zone distribution:NEAREST_BORDER
+[INFO] 2022-12-03 13:15:14.215 [JavaFX Application Thread] Experiment - Result - Total completed orders:2431,Average completed orders:0.2430757,For time steps count:10
+[INFO] 2022-12-03 13:15:14.215 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:15:22.770 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:15:22.994 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:50,Number of agents:100,Idling zone distribution:NEAREST_BORDER
+[INFO] 2022-12-03 13:15:26.601 [JavaFX Application Thread] Experiment - Result - Total completed orders:3690,Average completed orders:0.3689631,For time steps count:10
+[INFO] 2022-12-03 13:15:26.601 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:15:33.069 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:15:33.276 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:75,Number of agents:150,Idling zone distribution:NEAREST_BORDER
+[INFO] 2022-12-03 13:15:40.677 [JavaFX Application Thread] Experiment - Result - Total completed orders:3211,Average completed orders:0.3210679,For time steps count:10
+[INFO] 2022-12-03 13:15:40.677 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:15:47.026 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:15:47.220 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:100,Number of agents:200,Idling zone distribution:NEAREST_BORDER
+[INFO] 2022-12-03 13:16:00.384 [JavaFX Application Thread] Experiment - Result - Total completed orders:2018,Average completed orders:0.20177983,For time steps count:10
+[INFO] 2022-12-03 13:16:00.385 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:16:20.834 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:16:21.039 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:20,Number of agents:20,Idling zone distribution:NEAREST_BORDER
+[INFO] 2022-12-03 13:16:21.459 [JavaFX Application Thread] Experiment - Result - Total completed orders:1009,Average completed orders:0.100889914,For time steps count:10
+[INFO] 2022-12-03 13:16:21.460 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:16:28.024 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:16:28.213 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:50,Number of agents:50,Idling zone distribution:NEAREST_BORDER
+[INFO] 2022-12-03 13:16:29.391 [JavaFX Application Thread] Experiment - Result - Total completed orders:2310,Average completed orders:0.23097691,For time steps count:10
+[INFO] 2022-12-03 13:16:29.392 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:16:35.588 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:16:35.802 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:100,Number of agents:100,Idling zone distribution:NEAREST_BORDER
+[INFO] 2022-12-03 13:16:39.819 [JavaFX Application Thread] Experiment - Result - Total completed orders:3718,Average completed orders:0.3717628,For time steps count:10
+[INFO] 2022-12-03 13:16:39.820 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:16:50.679 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:16:50.879 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:150,Number of agents:150,Idling zone distribution:NEAREST_BORDER
+[INFO] 2022-12-03 13:16:58.871 [JavaFX Application Thread] Experiment - Result - Total completed orders:3192,Average completed orders:0.3191681,For time steps count:10
+[INFO] 2022-12-03 13:16:58.872 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:17:10.897 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:17:11.130 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:200,Number of agents:200,Idling zone distribution:NEAREST_BORDER
+[INFO] 2022-12-03 13:17:25.075 [JavaFX Application Thread] Experiment - Result - Total completed orders:2068,Average completed orders:0.20677932,For time steps count:10
+[INFO] 2022-12-03 13:17:25.076 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:17:42.607 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:17:42.825 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:5,Number of agents:20,Idling zone distribution:RANDOM_BORDER
+[INFO] 2022-12-03 13:17:43.455 [JavaFX Application Thread] Experiment - Result - Total completed orders:854,Average completed orders:0.08539146,For time steps count:10
+[INFO] 2022-12-03 13:17:43.457 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:17:50.192 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:17:50.398 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:12,Number of agents:50,Idling zone distribution:RANDOM_BORDER
+[INFO] 2022-12-03 13:17:51.701 [JavaFX Application Thread] Experiment - Result - Total completed orders:2287,Average completed orders:0.22867714,For time steps count:10
+[INFO] 2022-12-03 13:17:51.701 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:17:57.269 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:17:57.476 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:25,Number of agents:100,Idling zone distribution:RANDOM_BORDER
+[INFO] 2022-12-03 13:18:01.150 [JavaFX Application Thread] Experiment - Result - Total completed orders:3985,Average completed orders:0.39846015,For time steps count:10
+[INFO] 2022-12-03 13:18:01.151 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:18:07.501 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:18:07.726 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:37,Number of agents:150,Idling zone distribution:RANDOM_BORDER
+[INFO] 2022-12-03 13:18:15.205 [JavaFX Application Thread] Experiment - Result - Total completed orders:4028,Average completed orders:0.40275973,For time steps count:10
+[INFO] 2022-12-03 13:18:15.207 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:18:21.011 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:18:21.202 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:50,Number of agents:200,Idling zone distribution:RANDOM_BORDER
+[INFO] 2022-12-03 13:18:35.736 [JavaFX Application Thread] Experiment - Result - Total completed orders:2387,Average completed orders:0.23867613,For time steps count:10
+[INFO] 2022-12-03 13:18:35.737 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:18:41.915 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:18:42.129 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:10,Number of agents:20,Idling zone distribution:RANDOM_BORDER
+[INFO] 2022-12-03 13:18:42.668 [JavaFX Application Thread] Experiment - Result - Total completed orders:1161,Average completed orders:0.11608839,For time steps count:10
+[INFO] 2022-12-03 13:18:42.668 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:18:48.025 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:18:48.222 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:25,Number of agents:50,Idling zone distribution:RANDOM_BORDER
+[INFO] 2022-12-03 13:18:49.484 [JavaFX Application Thread] Experiment - Result - Total completed orders:2081,Average completed orders:0.20807919,For time steps count:10
+[INFO] 2022-12-03 13:18:49.484 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:18:55.588 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:18:55.803 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:50,Number of agents:100,Idling zone distribution:RANDOM_BORDER
+[INFO] 2022-12-03 13:18:59.656 [JavaFX Application Thread] Experiment - Result - Total completed orders:3858,Average completed orders:0.3857614,For time steps count:10
+[INFO] 2022-12-03 13:18:59.656 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:19:05.939 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:19:06.154 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:75,Number of agents:150,Idling zone distribution:RANDOM_BORDER
+[INFO] 2022-12-03 13:19:14.109 [JavaFX Application Thread] Experiment - Result - Total completed orders:3050,Average completed orders:0.3049695,For time steps count:10
+[INFO] 2022-12-03 13:19:14.110 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:19:19.710 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:19:19.928 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:100,Number of agents:200,Idling zone distribution:RANDOM_BORDER
+[INFO] 2022-12-03 13:19:33.775 [JavaFX Application Thread] Experiment - Result - Total completed orders:2044,Average completed orders:0.20437956,For time steps count:10
+[INFO] 2022-12-03 13:19:33.775 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:19:39.077 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:19:39.301 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:20,Number of agents:20,Idling zone distribution:RANDOM_BORDER
+[INFO] 2022-12-03 13:19:39.816 [JavaFX Application Thread] Experiment - Result - Total completed orders:1040,Average completed orders:0.1039896,For time steps count:10
+[INFO] 2022-12-03 13:19:39.816 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:19:45.091 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:19:45.313 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:50,Number of agents:50,Idling zone distribution:RANDOM_BORDER
+[INFO] 2022-12-03 13:19:46.647 [JavaFX Application Thread] Experiment - Result - Total completed orders:2459,Average completed orders:0.24587542,For time steps count:10
+[INFO] 2022-12-03 13:19:46.647 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:19:52.494 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:19:52.729 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:100,Number of agents:100,Idling zone distribution:RANDOM_BORDER
+[INFO] 2022-12-03 13:19:56.652 [JavaFX Application Thread] Experiment - Result - Total completed orders:3828,Average completed orders:0.38276172,For time steps count:10
+[INFO] 2022-12-03 13:19:56.652 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:20:02.265 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:20:02.480 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:150,Number of agents:150,Idling zone distribution:RANDOM_BORDER
+[INFO] 2022-12-03 13:20:10.466 [JavaFX Application Thread] Experiment - Result - Total completed orders:3066,Average completed orders:0.30656934,For time steps count:10
+[INFO] 2022-12-03 13:20:10.466 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:20:16.990 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:20:17.190 [JavaFX Application Thread] Experiment - Grid - Size x:21,Size y:21,Number of idling zones:200,Number of agents:200,Idling zone distribution:RANDOM_BORDER
+[INFO] 2022-12-03 13:20:31.731 [JavaFX Application Thread] Experiment - Result - Total completed orders:2013,Average completed orders:0.20127988,For time steps count:10
+[INFO] 2022-12-03 13:20:31.731 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:20:38.
+[INFO] 2022-12-03 13:31:40.096 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:31:40.281 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:9,Number of agents:76,Idling zone distribution:RANDOM
+[INFO] 2022-12-03 13:31:44.900 [JavaFX Application Thread] Experiment - Result - Total completed orders:2268,Average completed orders:0.22677732,For time steps count:10
+[INFO] 2022-12-03 13:31:44.900 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:32:35.979 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:32:36.159 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:23,Number of agents:190,Idling zone distribution:RANDOM
+[INFO] 2022-12-03 13:32:54.357 [JavaFX Application Thread] Experiment - Result - Total completed orders:4889,Average completed orders:0.4888511,For time steps count:10
+[INFO] 2022-12-03 13:32:54.357 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:33:09.928 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:33:10.148 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:48,Number of agents:381,Idling zone distribution:RANDOM
+[INFO] 2022-12-03 13:34:49.521 [JavaFX Application Thread] Experiment - Result - Total completed orders:7940,Average completed orders:0.79392064,For time steps count:10
+[INFO] 2022-12-03 13:34:49.522 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:45:40.860 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:45:41.055 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:72,Number of agents:571,Idling zone distribution:RANDOM
+[INFO] 2022-12-03 13:49:29.856 [JavaFX Application Thread] Experiment - Result - Total completed orders:5388,Average completed orders:0.5387461,For time steps count:10
+[INFO] 2022-12-03 13:49:29.856 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:50:06.396 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:50:06.609 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:97,Number of agents:762,Idling zone distribution:RANDOM
+[INFO] 2022-12-03 13:56:51.072 [JavaFX Application Thread] Experiment - Result - Total completed orders:2710,Average completed orders:0.2709729,For time steps count:10
+[INFO] 2022-12-03 13:56:51.073 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 13:58:22.108 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 13:58:22.345 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:19,Number of agents:76,Idling zone distribution:RANDOM
+[INFO] 2022-12-03 13:58:25.976 [JavaFX Application Thread] Experiment - Result - Total completed orders:2202,Average completed orders:0.22017798,For time steps count:10
+[INFO] 2022-12-03 13:58:25.976 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 14:06:10.536 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 14:06:10.703 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:48,Number of agents:190,Idling zone distribution:RANDOM
+[INFO] 2022-12-03 14:06:26.846 [JavaFX Application Thread] Experiment - Result - Total completed orders:5080,Average completed orders:0.50794923,For time steps count:10
+[INFO] 2022-12-03 14:06:26.847 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 14:06:35.491 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 14:06:35.723 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:97,Number of agents:381,Idling zone distribution:RANDOM
+[INFO] 2022-12-03 14:08:24.482 [JavaFX Application Thread] Experiment - Result - Total completed orders:8250,Average completed orders:0.8249175,For time steps count:10
+[INFO] 2022-12-03 14:08:24.482 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 14:08:49.470 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 14:08:49.726 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:146,Number of agents:571,Idling zone distribution:RANDOM
+[INFO] 2022-12-03 14:13:12.157 [JavaFX Application Thread] Experiment - Result - Total completed orders:5216,Average completed orders:0.52154785,For time steps count:10
+[INFO] 2022-12-03 14:13:12.158 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 14:13:35.838 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 14:13:36.029 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:195,Number of agents:762,Idling zone distribution:RANDOM
+[INFO] 2022-12-03 14:21:17.381 [JavaFX Application Thread] Experiment - Result - Total completed orders:2458,Average completed orders:0.24577542,For time steps count:10
+[INFO] 2022-12-03 14:21:17.383 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 14:21:30.784 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 14:21:30.988 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:39,Number of agents:76,Idling zone distribution:RANDOM
+[INFO] 2022-12-03 14:21:34.808 [JavaFX Application Thread] Experiment - Result - Total completed orders:2283,Average completed orders:0.22827718,For time steps count:10
+[INFO] 2022-12-03 14:21:34.808 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 14:21:40.631 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 14:21:40.861 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:97,Number of agents:190,Idling zone distribution:RANDOM
+[INFO] 2022-12-03 14:21:58.559 [JavaFX Application Thread] Experiment - Result - Total completed orders:5243,Average completed orders:0.5242476,For time steps count:10
+[INFO] 2022-12-03 14:21:58.559 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 14:22:04.660 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 14:22:04.861 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:195,Number of agents:381,Idling zone distribution:RANDOM
+[INFO] 2022-12-03 14:24:17.280 [JavaFX Application Thread] Experiment - Result - Total completed orders:7454,Average completed orders:0.74532545,For time steps count:10
+[INFO] 2022-12-03 14:24:17.281 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 14:24:35.231 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 14:24:35.505 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:292,Number of agents:571,Idling zone distribution:RANDOM
+[INFO] 2022-12-03 14:28:43.330 [JavaFX Application Thread] Experiment - Result - Total completed orders:3234,Average completed orders:0.32336766,For time steps count:10
+[INFO] 2022-12-03 14:28:43.331 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 14:29:00.150 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 14:29:00.443 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:390,Number of agents:762,Idling zone distribution:RANDOM
+[INFO] 2022-12-03 14:36:40.826 [JavaFX Application Thread] Experiment - Result - Total completed orders:2074,Average completed orders:0.20737927,For time steps count:10
+[INFO] 2022-12-03 14:36:40.827 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 14:43:03.385 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 14:43:03.649 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:9,Number of agents:76,Idling zone distribution:DISTRIBUTED_BORDER
+[INFO] 2022-12-03 14:43:07.979 [JavaFX Application Thread] Experiment - Result - Total completed orders:2223,Average completed orders:0.22227778,For time steps count:10
+[INFO] 2022-12-03 14:43:07.980 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 14:43:12.811 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 14:43:13.020 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:23,Number of agents:190,Idling zone distribution:DISTRIBUTED_BORDER
+[INFO] 2022-12-03 14:43:30.197 [JavaFX Application Thread] Experiment - Result - Total completed orders:4575,Average completed orders:0.45745426,For time steps count:10
+[INFO] 2022-12-03 14:43:30.197 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 14:43:35.400 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 14:43:35.597 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:48,Number of agents:381,Idling zone distribution:DISTRIBUTED_BORDER
+[INFO] 2022-12-03 14:45:07.664 [JavaFX Application Thread] Experiment - Result - Total completed orders:8360,Average completed orders:0.8359164,For time steps count:10
+[INFO] 2022-12-03 14:45:07.665 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 14:50:24.142 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 14:50:24.339 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:72,Number of agents:571,Idling zone distribution:DISTRIBUTED_BORDER
+[INFO] 2022-12-03 14:53:45.780 [JavaFX Application Thread] Experiment - Result - Total completed orders:3073,Average completed orders:0.30726928,For time steps count:10
+[INFO] 2022-12-03 14:53:45.781 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 14:53:51.867 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 14:53:52.087 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:97,Number of agents:762,Idling zone distribution:DISTRIBUTED_BORDER
+[INFO] 2022-12-03 15:00:14.834 [JavaFX Application Thread] Experiment - Result - Total completed orders:1510,Average completed orders:0.1509849,For time steps count:10
+[INFO] 2022-12-03 15:00:14.835 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 15:00:56.157 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 15:00:56.363 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:19,Number of agents:76,Idling zone distribution:DISTRIBUTED_BORDER
+[INFO] 2022-12-03 15:01:00.226 [JavaFX Application Thread] Experiment - Result - Total completed orders:2149,Average completed orders:0.21487851,For time steps count:10
+[INFO] 2022-12-03 15:01:00.226 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 15:01:11.388 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 15:01:11.595 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:48,Number of agents:190,Idling zone distribution:DISTRIBUTED_BORDER
+[INFO] 2022-12-03 15:01:29.253 [JavaFX Application Thread] Experiment - Result - Total completed orders:5151,Average completed orders:0.5150485,For time steps count:10
+[INFO] 2022-12-03 15:01:29.254 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 15:01:35.757 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 15:01:35.952 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:97,Number of agents:381,Idling zone distribution:DISTRIBUTED_BORDER
+[INFO] 2022-12-03 15:03:19.524 [JavaFX Application Thread] Experiment - Result - Total completed orders:5471,Average completed orders:0.5470453,For time steps count:10
+[INFO] 2022-12-03 15:03:19.525 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 15:07:57.333 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 15:07:57.569 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:146,Number of agents:571,Idling zone distribution:DISTRIBUTED_BORDER
+[INFO] 2022-12-03 15:11:19.082 [JavaFX Application Thread] Experiment - Result - Total completed orders:2227,Average completed orders:0.22267774,For time steps count:10
+[INFO] 2022-12-03 15:11:19.083 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 23:07:28.248 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 23:07:28.382 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:195,Number of agents:762,Idling zone distribution:DISTRIBUTED_BORDER
+[INFO] 2022-12-03 23:10:52.060 [JavaFX Application Thread] Experiment - Result - Total completed orders:1516,Average completed orders:0.15158485,For time steps count:10
+[INFO] 2022-12-03 23:10:52.061 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 23:11:09.291 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 23:11:09.402 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:39,Number of agents:76,Idling zone distribution:DISTRIBUTED_BORDER
+[INFO] 2022-12-03 23:11:10.988 [JavaFX Application Thread] Experiment - Result - Total completed orders:2371,Average completed orders:0.2370763,For time steps count:10
+[INFO] 2022-12-03 23:11:10.989 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 23:11:48.523 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 23:11:48.621 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:97,Number of agents:190,Idling zone distribution:DISTRIBUTED_BORDER
+[INFO] 2022-12-03 23:11:58.454 [JavaFX Application Thread] Experiment - Result - Total completed orders:5302,Average completed orders:0.53014696,For time steps count:10
+[INFO] 2022-12-03 23:11:58.454 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 23:22:34.834 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 23:22:34.948 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:195,Number of agents:381,Idling zone distribution:DISTRIBUTED_BORDER
+[INFO] 2022-12-03 23:23:25.297 [JavaFX Application Thread] Experiment - Result - Total completed orders:5559,Average completed orders:0.5558444,For time steps count:10
+[INFO] 2022-12-03 23:23:25.297 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 23:23:59.198 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 23:23:59.290 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:292,Number of agents:571,Idling zone distribution:DISTRIBUTED_BORDER
+[INFO] 2022-12-03 23:25:36.110 [JavaFX Application Thread] Experiment - Result - Total completed orders:2186,Average completed orders:0.21857814,For time steps count:10
+[INFO] 2022-12-03 23:25:36.110 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 23:25:50.598 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 23:25:50.708 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:390,Number of agents:762,Idling zone distribution:DISTRIBUTED_BORDER
+[INFO] 2022-12-03 23:29:11.024 [JavaFX Application Thread] Experiment - Result - Total completed orders:1600,Average completed orders:0.15998401,For time steps count:10
+[INFO] 2022-12-03 23:29:11.025 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 23:29:38.566 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 23:29:38.662 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:9,Number of agents:76,Idling zone distribution:NEAREST_BORDER
+[INFO] 2022-12-03 23:29:40.234 [JavaFX Application Thread] Experiment - Result - Total completed orders:2111,Average completed orders:0.2110789,For time steps count:10
+[INFO] 2022-12-03 23:29:40.234 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 23:29:48.436 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 23:29:48.543 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:23,Number of agents:190,Idling zone distribution:NEAREST_BORDER
+[INFO] 2022-12-03 23:29:56.971 [JavaFX Application Thread] Experiment - Result - Total completed orders:3970,Average completed orders:0.39696032,For time steps count:10
+[INFO] 2022-12-03 23:29:56.971 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 23:30:00.305 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 23:30:00.418 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:48,Number of agents:381,Idling zone distribution:NEAREST_BORDER
+[INFO] 2022-12-03 23:30:46.365 [JavaFX Application Thread] Experiment - Result - Total completed orders:5317,Average completed orders:0.53164685,For time steps count:10
+[INFO] 2022-12-03 23:30:46.365 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 23:30:50.537 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 23:30:50.656 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:72,Number of agents:571,Idling zone distribution:NEAREST_BORDER
+[INFO] 2022-12-03 23:32:30.435 [JavaFX Application Thread] Experiment - Result - Total completed orders:2184,Average completed orders:0.21837816,For time steps count:10
+[INFO] 2022-12-03 23:32:30.435 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 23:32:34.729 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 23:32:34.857 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:97,Number of agents:762,Idling zone distribution:NEAREST_BORDER
+[INFO] 2022-12-03 23:35:59.063 [JavaFX Application Thread] Experiment - Result - Total completed orders:1501,Average completed orders:0.15008499,For time steps count:10
+[INFO] 2022-12-03 23:35:59.063 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 23:36:03.982 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 23:36:04.095 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:19,Number of agents:76,Idling zone distribution:NEAREST_BORDER
+[INFO] 2022-12-03 23:36:05.854 [JavaFX Application Thread] Experiment - Result - Total completed orders:2139,Average completed orders:0.21387862,For time steps count:10
+[INFO] 2022-12-03 23:36:05.854 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 23:36:09.159 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 23:36:09.280 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:48,Number of agents:190,Idling zone distribution:NEAREST_BORDER
+[INFO] 2022-12-03 23:36:16.567 [JavaFX Application Thread] Experiment - Result - Total completed orders:5024,Average completed orders:0.5023498,For time steps count:10
+[INFO] 2022-12-03 23:36:16.567 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 23:36:20.164 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 23:36:20.280 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:97,Number of agents:381,Idling zone distribution:NEAREST_BORDER
+[INFO] 2022-12-03 23:37:11.336 [JavaFX Application Thread] Experiment - Result - Total completed orders:5482,Average completed orders:0.5481452,For time steps count:10
+[INFO] 2022-12-03 23:37:11.336 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 23:37:19.896 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 23:37:20.005 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:146,Number of agents:571,Idling zone distribution:NEAREST_BORDER
+[INFO] 2022-12-03 23:39:06.940 [JavaFX Application Thread] Experiment - Result - Total completed orders:2188,Average completed orders:0.21877812,For time steps count:10
+[INFO] 2022-12-03 23:39:06.940 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 23:39:13.890 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 23:39:14.008 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:195,Number of agents:762,Idling zone distribution:NEAREST_BORDER
+[INFO] 2022-12-03 23:42:41.307 [JavaFX Application Thread] Experiment - Result - Total completed orders:1610,Average completed orders:0.1609839,For time steps count:10
+[INFO] 2022-12-03 23:42:41.307 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 23:42:47.477 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 23:42:47.563 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:39,Number of agents:76,Idling zone distribution:NEAREST_BORDER
+[INFO] 2022-12-03 23:42:49.235 [JavaFX Application Thread] Experiment - Result - Total completed orders:2292,Average completed orders:0.22917709,For time steps count:10
+[INFO] 2022-12-03 23:42:49.235 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 23:42:53.806 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 23:42:53.920 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:97,Number of agents:190,Idling zone distribution:NEAREST_BORDER
+[INFO] 2022-12-03 23:43:02.118 [JavaFX Application Thread] Experiment - Result - Total completed orders:5317,Average completed orders:0.53164685,For time steps count:10
+[INFO] 2022-12-03 23:43:02.118 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 23:43:05.888 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 23:43:05.980 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:195,Number of agents:381,Idling zone distribution:NEAREST_BORDER
+[INFO] 2022-12-03 23:44:02.873 [JavaFX Application Thread] Experiment - Result - Total completed orders:5581,Average completed orders:0.5580442,For time steps count:10
+[INFO] 2022-12-03 23:44:02.873 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 23:44:06.527 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 23:44:06.633 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:292,Number of agents:571,Idling zone distribution:NEAREST_BORDER
+[INFO] 2022-12-03 23:45:48.444 [JavaFX Application Thread] Experiment - Result - Total completed orders:2165,Average completed orders:0.21647835,For time steps count:10
+[INFO] 2022-12-03 23:45:48.444 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 23:46:11.376 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 23:46:11.487 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:390,Number of agents:762,Idling zone distribution:NEAREST_BORDER
+[INFO] 2022-12-03 23:49:35.636 [JavaFX Application Thread] Experiment - Result - Total completed orders:1606,Average completed orders:0.16058394,For time steps count:10
+[INFO] 2022-12-03 23:49:35.636 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 23:49:40.376 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 23:49:40.503 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:9,Number of agents:76,Idling zone distribution:RANDOM_BORDER
+[INFO] 2022-12-03 23:49:42.497 [JavaFX Application Thread] Experiment - Result - Total completed orders:2229,Average completed orders:0.22287771,For time steps count:10
+[INFO] 2022-12-03 23:49:42.497 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 23:49:48.019 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 23:49:48.142 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:23,Number of agents:190,Idling zone distribution:RANDOM_BORDER
+[INFO] 2022-12-03 23:49:55.870 [JavaFX Application Thread] Experiment - Result - Total completed orders:4878,Average completed orders:0.48775122,For time steps count:10
+[INFO] 2022-12-03 23:49:55.870 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 23:49:59.506 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 23:49:59.618 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:48,Number of agents:381,Idling zone distribution:RANDOM_BORDER
+[INFO] 2022-12-03 23:50:45.757 [JavaFX Application Thread] Experiment - Result - Total completed orders:8479,Average completed orders:0.8478152,For time steps count:10
+[INFO] 2022-12-03 23:50:45.757 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 23:50:50.233 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 23:50:50.330 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:72,Number of agents:571,Idling zone distribution:RANDOM_BORDER
+[INFO] 2022-12-03 23:52:39.698 [JavaFX Application Thread] Experiment - Result - Total completed orders:3743,Average completed orders:0.37426257,For time steps count:10
+[INFO] 2022-12-03 23:52:39.698 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 23:52:42.935 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 23:52:43.066 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:97,Number of agents:762,Idling zone distribution:RANDOM_BORDER
+[INFO] 2022-12-03 23:56:17.377 [JavaFX Application Thread] Experiment - Result - Total completed orders:2008,Average completed orders:0.20077991,For time steps count:10
+[INFO] 2022-12-03 23:56:17.377 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 23:56:32.916 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 23:56:33.020 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:19,Number of agents:76,Idling zone distribution:RANDOM_BORDER
+[INFO] 2022-12-03 23:56:34.749 [JavaFX Application Thread] Experiment - Result - Total completed orders:2347,Average completed orders:0.23467652,For time steps count:10
+[INFO] 2022-12-03 23:56:34.749 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-03 23:56:38.992 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-03 23:56:39.108 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:48,Number of agents:190,Idling zone distribution:RANDOM_BORDER
+[INFO] 2022-12-03 23:56:47.006 [JavaFX Application Thread] Experiment - Result - Total completed orders:5237,Average completed orders:0.5236476,For time steps count:10
+[INFO] 2022-12-03 23:56:47.006 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-04 00:00:29.752 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-04 00:00:29.863 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:97,Number of agents:381,Idling zone distribution:RANDOM_BORDER
+[INFO] 2022-12-04 00:01:28.649 [JavaFX Application Thread] Experiment - Result - Total completed orders:7290,Average completed orders:0.72892714,For time steps count:10
+[INFO] 2022-12-04 00:01:28.649 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-04 00:01:32.388 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-04 00:01:32.515 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:146,Number of agents:571,Idling zone distribution:RANDOM_BORDER
+[INFO] 2022-12-04 00:03:55.908 [JavaFX Application Thread] Experiment - Result - Total completed orders:2203,Average completed orders:0.22027797,For time steps count:10
+[INFO] 2022-12-04 00:03:55.908 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-04 00:03:59.872 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-04 00:03:59.986 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:195,Number of agents:762,Idling zone distribution:RANDOM_BORDER
+[INFO] 2022-12-04 00:07:44.924 [JavaFX Application Thread] Experiment - Result - Total completed orders:1602,Average completed orders:0.16018398,For time steps count:10
+[INFO] 2022-12-04 00:07:44.925 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-04 00:07:48.471 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-04 00:07:48.582 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:39,Number of agents:76,Idling zone distribution:RANDOM_BORDER
+[INFO] 2022-12-04 00:07:50.434 [JavaFX Application Thread] Experiment - Result - Total completed orders:2082,Average completed orders:0.20817918,For time steps count:10
+[INFO] 2022-12-04 00:07:50.434 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-04 00:07:54.440 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-04 00:07:54.576 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:97,Number of agents:190,Idling zone distribution:RANDOM_BORDER
+[INFO] 2022-12-04 00:08:06.503 [JavaFX Application Thread] Experiment - Result - Total completed orders:5373,Average completed orders:0.5372463,For time steps count:10
+[INFO] 2022-12-04 00:08:06.503 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-04 00:08:10.594 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-04 00:08:10.708 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:195,Number of agents:381,Idling zone distribution:RANDOM_BORDER
+[INFO] 2022-12-04 00:09:09.292 [JavaFX Application Thread] Experiment - Result - Total completed orders:5263,Average completed orders:0.5262474,For time steps count:10
+[INFO] 2022-12-04 00:09:09.293 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-04 00:09:24.428 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-04 00:09:24.536 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:292,Number of agents:571,Idling zone distribution:RANDOM_BORDER
+[INFO] 2022-12-04 00:11:16.855 [JavaFX Application Thread] Experiment - Result - Total completed orders:2249,Average completed orders:0.2248775,For time steps count:10
+[INFO] 2022-12-04 00:11:16.855 [JavaFX Application Thread] Experiment - Stopping application..
+[INFO] 2022-12-04 00:11:30.364 [JavaFX Application Thread] App - Starting application..
+[INFO] 2022-12-04 00:11:30.481 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:390,Number of agents:762,Idling zone distribution:RANDOM_BORDER
+[INFO] 2022-12-04 00:15:11.811 [JavaFX Application Thread] Experiment - Result - Total completed orders:1526,Average completed orders:0.15258475,For time steps count:10
+[INFO] 2022-12-04 00:15:11.811 [JavaFX Application Thread] Experiment - Stopping application..
