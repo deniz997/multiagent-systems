@@ -116,6 +116,10 @@ public class Experiment {
                     warehouse.addIdlingZone(findFreeBorderCoordinate(warehouse));
                     count--;
                 }
+
+                for (int i = 0; i < count; i++) {
+                    warehouse.addIdlingZone(warehouse.findRandomFreeCell());
+                }
                 break;
             case NEAREST_BORDER:
                 // Place idling zones as close as possible to the drop zones
@@ -146,12 +150,22 @@ public class Experiment {
 
                 while (count > 0) {
                     Optional<Coordinate> coordinate = findClosestFreeBorderCell(warehouse, new Coordinate(0, 0));
+                    if (coordinate.isEmpty()) {
+                        break;
+                    }
                     coordinate.ifPresent(warehouse::addIdlingZone);
                     count--;
 
                     coordinate = findClosestFreeBorderCell(warehouse, new Coordinate(warehouse.getSizeX() - 1, 0));
+                    if (coordinate.isEmpty()) {
+                        break;
+                    }
                     coordinate.ifPresent(warehouse::addIdlingZone);
                     count--;
+                }
+
+                for (int j = 0; j < count; j++) {
+                    warehouse.addIdlingZone(warehouse.findRandomFreeCell());
                 }
 
                 break;
@@ -170,6 +184,12 @@ public class Experiment {
                         break;
                     }
 
+                    // Break early if all border cells are occupied
+                    int idlingZoneCount = warehouse.getCoordinatesOf(Warehouse.GridCellType.IDLING_ZONE).size() + 1;
+                    if (idlingZoneCount >= 2 * midX + 2 * midY) {
+                        break;
+                    }
+
                     // Add left
                     Coordinate left = new Coordinate(0, midY + sign * i * 2);
                     if (left.y != 0) {
@@ -178,6 +198,12 @@ public class Experiment {
                     count--;
 
                     if (count <= 0) {
+                        break;
+                    }
+
+                    // Break early if all border cells are occupied
+                    idlingZoneCount = warehouse.getCoordinatesOf(Warehouse.GridCellType.IDLING_ZONE).size() + 1;
+                    if (idlingZoneCount >= 2 * midX + 2 * midY) {
                         break;
                     }
 
@@ -192,6 +218,12 @@ public class Experiment {
                         break;
                     }
 
+                    // Break early if all border cells are occupied
+                    idlingZoneCount = warehouse.getCoordinatesOf(Warehouse.GridCellType.IDLING_ZONE).size() + 1;
+                    if (idlingZoneCount >= 2 * midX + 2 * midY) {
+                        break;
+                    }
+
                     // Add bottom
                     warehouse.addIdlingZone(new Coordinate(midX + sign * i * 2, warehouse.getSizeY() - 1));
                     count--;
@@ -200,11 +232,21 @@ public class Experiment {
                         break;
                     }
 
+                    // Break early if all border cells are occupied
+                    idlingZoneCount = warehouse.getCoordinatesOf(Warehouse.GridCellType.IDLING_ZONE).size() + 1;
+                    if (idlingZoneCount >= 2 * midX + 2 * midY) {
+                        break;
+                    }
+
                     sign = sign * (-1);
 
                     if (sign == -1) {
                         i++;
                     }
+                }
+
+                for (int j = 0; j < count; j++) {
+                    warehouse.addIdlingZone(warehouse.findRandomFreeCell());
                 }
 
                 break;
