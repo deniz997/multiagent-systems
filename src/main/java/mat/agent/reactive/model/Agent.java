@@ -26,6 +26,8 @@ public class Agent {
     private Order order;
     private Coordinate currentPos;
 
+    public int bid;
+
     public Agent(Warehouse warehouse, Coordinate currentPos) {
         this.warehouse = warehouse;
 

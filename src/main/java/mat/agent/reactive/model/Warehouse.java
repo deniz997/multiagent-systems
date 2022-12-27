@@ -1,9 +1,6 @@
 package mat.agent.reactive.model;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
 
 public class Warehouse {
     public enum IdlingZoneDistribution {
@@ -162,10 +159,19 @@ public class Warehouse {
     }
 
     public void distributeOrders() {
+        LinkedList<Agent>agentsWithBids = new LinkedList<>();
+        LinkedList<Order> orders = new LinkedList<>(); // TODO: new way of generating orders, maybe a fixed set?
+        Order order = orders.getFirst();
         for (Agent agent : getAgents()) {
             if (agent.canReceiveOrder()) {
-                agent.setOrder(generateOrder());
+                agent.bid = (getCoordinateDelta(agent.getCoordinate(), order.getNextCoordinate()));
+                agentsWithBids.add(agent);
             }
+
+            Collections.sort(agentsWithBids, (a1, a2) -> {
+                return a2.bid-a1.bid;
+            });
+            agentsWithBids.get(0).setOrder(order);
         }
     }
 
