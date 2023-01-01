@@ -17,7 +17,7 @@ public class Experiment {
     private static final Logger logger = LogManager.getLogger(Experiment.class);
     private static final int TIME_STEP_PERIOD_IN_MS = 200;
     private final int PASS_TROUGH_INTERVAL = 10;
-    private final int STEP_COUNT_THRESHOLD = 50000;
+    private final int STEP_COUNT_THRESHOLD = 1000;
     private int passTroughBuffer = 0;
     private int passTrough = 0;
     private int stepCount = 0;

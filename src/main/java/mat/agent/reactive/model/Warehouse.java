@@ -1,5 +1,7 @@
 package mat.agent.reactive.model;
 
+import org.apache.logging.log4j.util.SystemPropertiesPropertySource;
+
 import java.util.*;
 
 public class Warehouse {
@@ -160,19 +162,31 @@ public class Warehouse {
 
     public void distributeOrders() {
         LinkedList<Agent>agentsWithBids = new LinkedList<>();
-        LinkedList<Order> orders = new LinkedList<>(); // TODO: new way of generating orders, maybe a fixed set?
-        Order order = orders.getFirst();
+        Order order = generateOrder();
         for (Agent agent : getAgents()) {
             if (agent.canReceiveOrder()) {
-                agent.bid = (getCoordinateDelta(agent.getCoordinate(), order.getNextCoordinate()));
-                agentsWithBids.add(agent);
+                Optional<Coordinate> nextCoordinate = order.getNextCoordinate();
+                if (nextCoordinate.isPresent()) {
+                    agent.bid = (getCoordinateDelta(agent.getCoordinate(), nextCoordinate.get()));
+//                    System.out.print("agent with position " + agent.getCoordinate().x + ":" + agent.getCoordinate().y + " bid: " + agent.bid+ " on "+ order.getNextCoordinate().get().x + ":" + order.getNextCoordinate().get().y + "\n");
+                    agentsWithBids.add(agent);
+                }
             }
+        }
 
             Collections.sort(agentsWithBids, (a1, a2) -> {
-                return a2.bid-a1.bid;
+                if(a1.bid < a2.bid){
+                    return -1;
+                }else{
+                    return 1;
+                }
             });
-            agentsWithBids.get(0).setOrder(order);
-        }
+
+            if (!agentsWithBids.isEmpty()){
+//                System.out.print("best Bid: "+ agentsWithBids.get(0).bid+ "\n");
+                agentsWithBids.get(0).setOrder(order);
+            }
+
     }
 
     public int getCoordinateDelta(Coordinate coordinate1, Coordinate coordinate2) {
