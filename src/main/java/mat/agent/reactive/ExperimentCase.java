@@ -8,6 +8,7 @@ public class ExperimentCase {
     private int agentCount;
     private int idlingZoneCount;
     private Warehouse.IdlingZoneDistribution idlingZoneDistribution;
+    private OrderDistributionStrategy orderDistributionStrategy;
 
     public int getSizeY() {
         return SizeY;
@@ -55,6 +56,16 @@ public class ExperimentCase {
 
     public ExperimentCase setIdlingZoneDistribution(Warehouse.IdlingZoneDistribution idlingZoneDistribution) {
         this.idlingZoneDistribution = idlingZoneDistribution;
+
+        return this;
+    }
+
+    public OrderDistributionStrategy getOrderDistributionStrategy() {
+        return orderDistributionStrategy;
+    }
+
+    public ExperimentCase setOrderDistributionStrategy(OrderDistributionStrategy orderDistributionStrategy) {
+        this.orderDistributionStrategy = orderDistributionStrategy;
 
         return this;
     }

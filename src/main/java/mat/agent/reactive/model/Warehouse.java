@@ -1,11 +1,15 @@
 package mat.agent.reactive.model;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
+import mat.agent.reactive.Experiment;
+import mat.agent.reactive.OrderDistributionStrategy;
+import mat.agent.reactive.strategy.BasicStrategy;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.util.*;
 
 public class Warehouse {
+
     public enum IdlingZoneDistribution {
         RANDOM_BORDER,
         RANDOM,
@@ -19,11 +23,13 @@ public class Warehouse {
         IDLING_ZONE,
     }
 
-    private static final int ORDER_SIZE = 3;
     private final int sizeX;
     private final int sizeY;
     private final GridCellType[][] grid;
     private final List<Agent> agents = new LinkedList<>();
+    private static final Logger logger = LogManager.getLogger(Warehouse.class);
+    // Basic strategy by default
+    private OrderDistributionStrategy orderDistributionStrategy = new BasicStrategy();
 
     public Warehouse(int sizeX, int sizeY) {
         this.sizeX = sizeX;
@@ -79,6 +85,10 @@ public class Warehouse {
         }
 
         return coordinates;
+    }
+
+    public void setOrderDistributionStrategy(OrderDistributionStrategy orderDistributionStrategy) {
+        this.orderDistributionStrategy = orderDistributionStrategy;
     }
 
     public List<Coordinate> getCoordinatesOf(GridCellType cellType) {
@@ -151,22 +161,13 @@ public class Warehouse {
         }
     }
 
-    private Order generateOrder() {
-        LinkedList<Coordinate> orderCoordinates = new LinkedList<>();
-
-        for (int i = 0; i < ORDER_SIZE; i++) {
-            orderCoordinates.add(findRandomFreeCell());
-        }
-
-        return new Order(orderCoordinates);
-    }
-
     public void distributeOrders() {
-        for (Agent agent : getAgents()) {
-            if (agent.canReceiveOrder()) {
-                agent.setOrder(generateOrder());
-            }
+        if (Objects.nonNull(orderDistributionStrategy)) {
+            orderDistributionStrategy.distribute(this);
+        } else {
+            logger.warn("No order distribution strategy set");
         }
+
     }
 
     public int getCoordinateDelta(Coordinate coordinate1, Coordinate coordinate2) {

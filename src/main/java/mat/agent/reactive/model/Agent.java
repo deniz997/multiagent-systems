@@ -218,4 +218,18 @@ public class Agent {
     public Coordinate getCoordinate() {
         return currentPos;
     }
+
+    public int getBidForOrder(Order order) {
+        // Accumulate the distance of all products in the order
+        Coordinate currentCoordinate = getCoordinate();
+
+        int bid = 0;
+
+        for (Coordinate coordinate : order.getCoordinates()) {
+            bid += warehouse.getCoordinateDelta(currentCoordinate, coordinate);
+            currentCoordinate = coordinate;
+        }
+
+        return bid;
+    }
 }

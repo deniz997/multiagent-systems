@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
 import mat.agent.reactive.model.Warehouse;
+import mat.agent.reactive.strategy.CNPStrategy;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,16 +19,18 @@ public class App extends javafx.application.Application {
     public void start(Stage stage) throws IOException {
         logger.info("Starting application..");
         Parent root = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("view.fxml")));
-        int agentCount = 150;
+        int agentCount = 15;
         int idlingZoneCount = (int) (agentCount*0.5);
         experiment = new Experiment(stage, root);
         ExperimentCase experimentCase = new ExperimentCase();
         experimentCase
                 .setAgentCount(agentCount)
                 .setIdlingZoneCount(idlingZoneCount)
-                .setSizeX(21)
-                .setSizeY(21)
+                .setSizeX(11)
+                .setSizeY(11)
+                .setOrderDistributionStrategy(new CNPStrategy(10, 100))
                 .setIdlingZoneDistribution(Warehouse.IdlingZoneDistribution.RANDOM);
+
         experiment.setCase(experimentCase);
         experiment.runGui();
     }

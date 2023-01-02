@@ -17,7 +17,7 @@ public class Experiment {
     private static final Logger logger = LogManager.getLogger(Experiment.class);
     private static final int TIME_STEP_PERIOD_IN_MS = 200;
     private final int PASS_TROUGH_INTERVAL = 10;
-    private final int STEP_COUNT_THRESHOLD = 50000;
+    private final int STEP_COUNT_THRESHOLD = 1000;
     private int passTroughBuffer = 0;
     private int passTrough = 0;
     private int stepCount = 0;
@@ -263,12 +263,9 @@ public class Experiment {
         this.experimentCase = experimentCase;
     }
 
-    public void run() {
-        if (Objects.isNull(experimentCase)) {
-            return;
-        }
-
+    private Warehouse setUpWarehouse() {
         Warehouse warehouse = new Warehouse(experimentCase.getSizeX(), experimentCase.getSizeY());
+        warehouse.setOrderDistributionStrategy(experimentCase.getOrderDistributionStrategy());
         addDropZones(warehouse);
         addIdlingZones(warehouse, experimentCase.getIdlingZoneDistribution(), experimentCase.getIdlingZoneCount());
         // Important to add agents last
@@ -278,6 +275,17 @@ public class Experiment {
                 "Number of idling zones:" + experimentCase.getIdlingZoneCount() + "," +
                 "Number of agents:" + experimentCase.getAgentCount() + "," +
                 "Idling zone distribution:" + experimentCase.getIdlingZoneDistribution());
+
+        return warehouse;
+    }
+
+    public void run() {
+        if (Objects.isNull(experimentCase)) {
+            return;
+        }
+
+        Warehouse warehouse = setUpWarehouse();
+
 
         while (stepCount <= STEP_COUNT_THRESHOLD) {
             if (stepCount % 10000 == 0) {
@@ -315,16 +323,7 @@ public class Experiment {
             return;
         }
 
-        Warehouse warehouse = new Warehouse(experimentCase.getSizeX(), experimentCase.getSizeY());
-        addDropZones(warehouse);
-        addIdlingZones(warehouse, experimentCase.getIdlingZoneDistribution(), experimentCase.getIdlingZoneCount());
-        // Important to add agents last
-        addAgents(warehouse, experimentCase.getAgentCount());
-
-        logger.info("Grid - Size x:" + experimentCase.getSizeX() + "," + "Size y:" + experimentCase.getSizeY() + "," +
-                "Number of idling zones:" + experimentCase.getIdlingZoneCount() + "," +
-                "Number of agents:" + experimentCase.getAgentCount() + "," +
-                "Idling zone distribution:" + experimentCase.getIdlingZoneDistribution());
+        Warehouse warehouse = setUpWarehouse();
 
         AppController appController = new AppController(root);
         Scene scene = new Scene(root, 800, 800);

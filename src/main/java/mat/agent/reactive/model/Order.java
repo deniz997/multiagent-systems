@@ -28,4 +28,8 @@ public class Order {
 		}
 		return Optional.empty();
 	}
+
+	public List<Coordinate> getCoordinates() {
+		return coordinates;
+	}
 }
