@@ -8,7 +8,7 @@ import mat.agent.reactive.model.Warehouse;
 import java.util.LinkedList;
 
 public class BasicStrategy implements OrderDistributionStrategy {
-    private static final int ORDER_SIZE = 3;;
+    private static final int ORDER_SIZE = 3;
 
     private Order generateOrder(Warehouse warehouse) {
         LinkedList<Coordinate> orderCoordinates = new LinkedList<>();
