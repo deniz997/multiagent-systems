@@ -219,17 +219,9 @@ public class Agent {
         return currentPos;
     }
 
-    public int getBidForOrder(Order order) {
-        // Accumulate the distance of all products in the order
-        Coordinate currentCoordinate = getCoordinate();
-
-        int bid = 0;
-
-        for (Coordinate coordinate : order.getCoordinates()) {
-            bid += warehouse.getCoordinateDelta(currentCoordinate, coordinate);
-            currentCoordinate = coordinate;
-        }
-
-        return bid;
+    public Optional<Integer> getBidForOrder(Order order) {
+       // Get the distance of the first product in the order
+        return order.getNextCoordinate()
+                .map(coordinate -> warehouse.getCoordinateDelta(currentPos, coordinate));
     }
 }

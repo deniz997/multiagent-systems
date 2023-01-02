@@ -32,7 +32,7 @@ public class CNPStrategy implements OrderDistributionStrategy {
         Optional<Order> order = bucket.tryAcquire(warehouse);
         order.ifPresent(value -> warehouse.getAgents().stream()
                 .filter(Agent::canReceiveOrder)
-                .max(Comparator.comparingInt(a -> a.getBidForOrder(value)))
+                .min(Comparator.comparingInt(a -> a.getBidForOrder(value).orElse(Integer.MAX_VALUE)))
                 .ifPresent(agent -> agent.setOrder(value)));
     }
 }
