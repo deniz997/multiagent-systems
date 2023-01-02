@@ -1,6 +1,7 @@
 package mat.agent.reactive;
 
 import mat.agent.reactive.model.Warehouse;
+import mat.agent.reactive.strategy.OrderDistributionStrategy;
 
 public class ExperimentCase {
     private int sizeX;

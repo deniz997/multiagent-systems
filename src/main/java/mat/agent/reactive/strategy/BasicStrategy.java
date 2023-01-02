@@ -1,6 +1,5 @@
 package mat.agent.reactive.strategy;
 
-import mat.agent.reactive.OrderDistributionStrategy;
 import mat.agent.reactive.model.Agent;
 import mat.agent.reactive.model.Coordinate;
 import mat.agent.reactive.model.Order;
@@ -28,5 +27,9 @@ public class BasicStrategy implements OrderDistributionStrategy {
                 agent.setOrder(generateOrder(warehouse));
             }
         }
+    }
+
+    @Override
+    public void onReport(Warehouse.ReportType reportType, Agent agent) {
     }
 }

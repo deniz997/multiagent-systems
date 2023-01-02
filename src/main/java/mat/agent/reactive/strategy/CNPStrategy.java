@@ -1,7 +1,6 @@
 package mat.agent.reactive.strategy;
 
 import mat.agent.reactive.OrderBucket;
-import mat.agent.reactive.OrderDistributionStrategy;
 import mat.agent.reactive.model.Agent;
 import mat.agent.reactive.model.Order;
 import mat.agent.reactive.model.Warehouse;
@@ -22,6 +21,12 @@ public class CNPStrategy implements OrderDistributionStrategy {
         bucket = new OrderBucket(maxOrders, refillIntervalInMilliSecond, TimeUnit.MILLISECONDS);
     }
 
+    public Optional<Agent> bidForOrder(Warehouse warehouse, Order order) {
+        return warehouse.getAgents().stream()
+                .filter(Agent::canReceiveOrder)
+                .min(Comparator.comparingInt(a -> a.getBidForOrder(order).orElse(Integer.MAX_VALUE)));
+    }
+
     @Override
     public void distribute(Warehouse warehouse) {
         // At least one agent should be able to receive the order
@@ -29,10 +34,12 @@ public class CNPStrategy implements OrderDistributionStrategy {
             return;
         }
 
-        Optional<Order> order = bucket.tryAcquire(warehouse);
-        order.ifPresent(value -> warehouse.getAgents().stream()
-                .filter(Agent::canReceiveOrder)
-                .min(Comparator.comparingInt(a -> a.getBidForOrder(value).orElse(Integer.MAX_VALUE)))
-                .ifPresent(agent -> agent.setOrder(value)));
+        bucket.tryAcquire(warehouse)
+                .ifPresent(order -> bidForOrder(warehouse, order)
+                        .ifPresent(agent -> agent.setOrder(order)));
+    }
+
+    @Override
+    public void onReport(Warehouse.ReportType reportType, Agent agent) {
     }
 }

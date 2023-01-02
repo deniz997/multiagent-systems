@@ -1,7 +1,6 @@
 package mat.agent.reactive.model;
 
-import mat.agent.reactive.Experiment;
-import mat.agent.reactive.OrderDistributionStrategy;
+import mat.agent.reactive.strategy.OrderDistributionStrategy;
 import mat.agent.reactive.strategy.BasicStrategy;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,6 +20,12 @@ public class Warehouse {
         FREE,
         DROP_ZONE,
         IDLING_ZONE,
+    }
+
+    public enum ReportType {
+        ORDER_COMPLETED,
+        GOOD_DROPPED,
+        GOOD_PICKED_UP,
     }
 
     private final int sizeX;
@@ -167,10 +172,16 @@ public class Warehouse {
         } else {
             logger.warn("No order distribution strategy set");
         }
-
     }
 
     public int getCoordinateDelta(Coordinate coordinate1, Coordinate coordinate2) {
         return Math.abs((coordinate1.x - coordinate2.x)) +  Math.abs((coordinate1.y - coordinate2.y));
+    }
+
+    // The warehouse can get different types of reports from the agents
+    public void report(ReportType reportType, Agent agent) {
+        if (Objects.nonNull(orderDistributionStrategy)) {
+            orderDistributionStrategy.onReport(reportType, agent);
+        }
     }
 }

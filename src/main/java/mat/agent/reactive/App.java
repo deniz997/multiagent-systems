@@ -5,6 +5,7 @@ import javafx.scene.Parent;
 import javafx.stage.Stage;
 import mat.agent.reactive.model.Warehouse;
 import mat.agent.reactive.strategy.CNPStrategy;
+import mat.agent.reactive.strategy.ECNPStrategy;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -28,7 +29,7 @@ public class App extends javafx.application.Application {
                 .setIdlingZoneCount(idlingZoneCount)
                 .setSizeX(11)
                 .setSizeY(11)
-                .setOrderDistributionStrategy(new CNPStrategy(10, 100))
+                .setOrderDistributionStrategy(new ECNPStrategy(10, 100))
                 .setIdlingZoneDistribution(Warehouse.IdlingZoneDistribution.RANDOM);
 
         experiment.setCase(experimentCase);

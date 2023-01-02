@@ -6,12 +6,14 @@ import org.apache.logging.log4j.Logger;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Random;
+import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Agent {
     private static final Logger logger = LogManager.getLogger(Agent.class);
     private int pendingCount = 0;
     private Coordinate freeRandomCell;
+    private final String id = UUID.randomUUID().toString();
 
     public enum Status {
         FREE,
@@ -36,6 +38,10 @@ public class Agent {
         }
     }
 
+    public String getId() {
+        return id;
+    }
+
     public void setCurrentPosX(int x) {
         if (warehouse.isInBounds(new Coordinate(x, currentPos.y))) {
             this.currentPos.x = x;
@@ -46,6 +52,10 @@ public class Agent {
         if (warehouse.isInBounds(new Coordinate(currentPos.x, y))) {
             this.currentPos.y = y;
         }
+    }
+
+    public Warehouse getWarehouse() {
+        return warehouse;
     }
 
     public boolean canReceiveOrder() {
@@ -137,6 +147,10 @@ public class Agent {
         }
     }
 
+    public Order getOrder() {
+        return order;
+    }
+
     public void setOrder(Order order) {
         this.order = order;
     }
@@ -164,6 +178,7 @@ public class Agent {
             case GET_PRODUCT:
                 order.getNextCoordinate()
                         .ifPresent(coordinate -> moveToCoordinate(coordinate, () -> {
+                            warehouse.report(Warehouse.ReportType.GOOD_PICKED_UP, this);
                             status = Status.TO_DROP_OFF;
                         }));
                 break;
@@ -173,10 +188,12 @@ public class Agent {
 
                 nextDropZone.ifPresent(coordinate -> moveToCoordinate(coordinate, () -> {
                     order.pop();
+                    warehouse.report(Warehouse.ReportType.GOOD_DROPPED, this);
 
                     if (hasOrder()) {
                         status = Status.GET_PRODUCT;
                     } else {
+                        warehouse.report(Warehouse.ReportType.ORDER_COMPLETED, this);
                         isFinishedOrder.set(true);
                         status = Status.TO_IDLING_ZONE;
                     }
