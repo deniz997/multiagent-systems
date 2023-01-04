@@ -109,7 +109,7 @@ public class Experiment {
                 while (count > 0) {
                     // Break early if all border cells are occupied
                     int idlingZoneCount = warehouse.getCoordinatesOf(Warehouse.GridCellType.IDLING_ZONE).size();
-                    if (idlingZoneCount >= (warehouse.getSizeX() - 1) + 2 * (warehouse.getSizeY() - 1) - ((warehouse.getSizeX() / 2) + 1)) {
+                    if (idlingZoneCount >= 2 * (warehouse.getSizeX() - 1) + 2 * (warehouse.getSizeY() - 1) - ((warehouse.getSizeX() / 2) + 1)) {
                         break;
                     }
 
