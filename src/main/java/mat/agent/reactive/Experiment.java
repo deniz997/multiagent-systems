@@ -17,7 +17,7 @@ public class Experiment {
     private static final Logger logger = LogManager.getLogger(Experiment.class);
     private static final int TIME_STEP_PERIOD_IN_MS = 200;
     private final int PASS_TROUGH_INTERVAL = 10;
-    private final int STEP_COUNT_THRESHOLD = 1000;
+    private final int STEP_COUNT_THRESHOLD = 50000;
     private int passTroughBuffer = 0;
     private int passTrough = 0;
     private int stepCount = 0;
@@ -109,7 +109,7 @@ public class Experiment {
                 while (count > 0) {
                     // Break early if all border cells are occupied
                     int idlingZoneCount = warehouse.getCoordinatesOf(Warehouse.GridCellType.IDLING_ZONE).size();
-                    if (idlingZoneCount >= 2 * (warehouse.getSizeX() - 1) + 2 * (warehouse.getSizeY() - 1) - ((warehouse.getSizeX() / 2) + 1)) {
+                    if (idlingZoneCount >= (warehouse.getSizeX() - 1) + 2 * (warehouse.getSizeY() - 1) - ((warehouse.getSizeX() / 2) + 1)) {
                         break;
                     }
 
@@ -315,6 +315,8 @@ public class Experiment {
             }
         }
 
+        // Sum together all collisions
+        logger.info("Collisions: " + warehouse.getAgents().stream().mapToInt(Agent::getCollisionCount).sum());
         exit();
     }
 

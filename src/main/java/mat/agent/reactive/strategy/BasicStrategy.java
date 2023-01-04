@@ -11,13 +11,13 @@ public class BasicStrategy implements OrderDistributionStrategy {
     private static final int ORDER_SIZE = 3;
 
     private Order generateOrder(Warehouse warehouse) {
-        LinkedList<Coordinate> orderCoordinates = new LinkedList<>();
+        Order order = new Order();
 
         for (int i = 0; i < ORDER_SIZE; i++) {
-            orderCoordinates.add(warehouse.findRandomFreeCell());
+            order.add(warehouse.findRandomFreeCell());
         }
 
-        return new Order(orderCoordinates);
+        return order;
     }
 
     @Override

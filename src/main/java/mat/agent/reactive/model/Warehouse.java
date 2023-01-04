@@ -184,4 +184,14 @@ public class Warehouse {
             orderDistributionStrategy.onReport(reportType, agent);
         }
     }
+
+    public Agent getAgentByCoordinate(Coordinate coordinate) {
+        for (Agent agent : getAgents()) {
+            if (agent.getCoordinate().x == coordinate.x && agent.getCoordinate().y == coordinate.y) {
+                return agent;
+            }
+        }
+
+        return null;
+    }
 }

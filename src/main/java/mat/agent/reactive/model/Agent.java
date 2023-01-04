@@ -6,14 +6,14 @@ import org.apache.logging.log4j.Logger;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Random;
-import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Agent {
     private static final Logger logger = LogManager.getLogger(Agent.class);
     private int pendingCount = 0;
     private Coordinate freeRandomCell;
-    private final String id = UUID.randomUUID().toString();
+    private final String id = String.valueOf(Counter.increment());
+    private int collisionCount = 0;
 
     public enum Status {
         FREE,
@@ -62,6 +62,10 @@ public class Agent {
         return pendingCount <= 0;
     }
 
+    public int getCollisionCount() {
+        return collisionCount;
+    }
+
     public void moveTo(Coordinate coordinate) {
         int moveX = 0;
         int moveY = 0;
@@ -97,7 +101,7 @@ public class Agent {
             setCurrentPosY(currentPos.y + moveY);
             return;
         }
-        //logger.warn("Collision");
+        collisionCount++;
 
         // In case of collision in both x and y we try 10 times to move randomly
         int counter = 10;

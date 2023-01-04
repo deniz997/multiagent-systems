@@ -5,6 +5,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import mat.agent.reactive.model.Agent;
 import mat.agent.reactive.model.Coordinate;
 import mat.agent.reactive.model.Warehouse;
 
@@ -55,6 +57,7 @@ public class AppController implements ControllerInterface {
             for (int x = 0; x < grid[y].length; x++) {
                 HBox cell = (HBox) row.getChildren().get(x);
                 Warehouse.GridCellType cellType = grid[y][x];
+                cell.getChildren().clear();
 
                 switch (cellType) {
                     case FREE:
@@ -74,9 +77,11 @@ public class AppController implements ControllerInterface {
         List<Coordinate> coordinates = warehouse.getAgentCoordinates();
 
         for (Coordinate coordinate : coordinates) {
+            Agent agent = warehouse.getAgentByCoordinate(coordinate);
             HBox row = (HBox) view.getChildren().get(coordinate.y);
             HBox cell = (HBox) row.getChildren().get(coordinate.x);
             cell.setBackground(createBackground(Color.RED));
+            cell.getChildren().add(new Text(agent.getId()));
         }
     }
 

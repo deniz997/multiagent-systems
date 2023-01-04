@@ -6,10 +6,10 @@ import java.util.Optional;
 
 public class Order {
 	 
-	private final List<Coordinate> coordinates;
+	private final List<Coordinate> coordinates = new LinkedList<>();
 	
-	public Order(LinkedList<Coordinate> coordinates) {
-		this.coordinates = coordinates;
+	public Order(Coordinate ...coordinates) {
+		this.coordinates.addAll(Arrays.asList(coordinates));
 	}
 
 	public int count() {
@@ -31,5 +31,9 @@ public class Order {
 
 	public List<Coordinate> getCoordinates() {
 		return coordinates;
+	}
+
+	public void add(Coordinate coordinate) {
+		coordinates.add(coordinate);
 	}
 }

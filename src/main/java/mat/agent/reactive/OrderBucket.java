@@ -1,11 +1,8 @@
 package mat.agent.reactive;
 
-import mat.agent.reactive.model.Agent;
-import mat.agent.reactive.model.Coordinate;
 import mat.agent.reactive.model.Order;
 import mat.agent.reactive.model.Warehouse;
 
-import java.util.LinkedList;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
@@ -28,13 +25,13 @@ public class OrderBucket {
     private static final int ORDER_SIZE = 3;;
 
     private Order generateOrder(Warehouse warehouse) {
-        LinkedList<Coordinate> orderCoordinates = new LinkedList<>();
+        Order order = new Order();
 
         for (int i = 0; i < ORDER_SIZE; i++) {
-            orderCoordinates.add(warehouse.findRandomFreeCell());
+            order.add(warehouse.findRandomFreeCell());
         }
 
-        return new Order(orderCoordinates);
+        return order;
     }
 
     public Optional<Order> tryAcquire(Warehouse warehouse) {
