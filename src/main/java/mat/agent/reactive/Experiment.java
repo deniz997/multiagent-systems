@@ -15,9 +15,9 @@ import java.util.*;
 
 public class Experiment {
     private static final Logger logger = LogManager.getLogger(Experiment.class);
-    private static final int TIME_STEP_PERIOD_IN_MS = 200;
+    private static final int TIME_STEP_PERIOD_IN_MS = 2;
     private final int PASS_TROUGH_INTERVAL = 10;
-    private final int STEP_COUNT_THRESHOLD = 50000;
+    private final int STEP_COUNT_THRESHOLD = 10000;
     private int passTroughBuffer = 0;
     private int passTrough = 0;
     private int stepCount = 0;
@@ -274,7 +274,8 @@ public class Experiment {
         logger.info("Grid - Size x:" + experimentCase.getSizeX() + "," + "Size y:" + experimentCase.getSizeY() + "," +
                 "Number of idling zones:" + experimentCase.getIdlingZoneCount() + "," +
                 "Number of agents:" + experimentCase.getAgentCount() + "," +
-                "Idling zone distribution:" + experimentCase.getIdlingZoneDistribution());
+                "Idling zone distribution:" + experimentCase.getIdlingZoneDistribution() + "," +
+                "OrderDistributionStrategy:" + experimentCase.getOrderDistributionStrategy().getClass().toString());
 
         return warehouse;
     }
