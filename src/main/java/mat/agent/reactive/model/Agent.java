@@ -27,6 +27,7 @@ public class Agent {
     private Status status = Status.FREE;
     private Order order;
     private Coordinate currentPos;
+    private Coordinate movingTo;
 
     public Agent(Warehouse warehouse, Coordinate currentPos) {
         this.warehouse = warehouse;
@@ -143,11 +144,13 @@ public class Agent {
     }
 
     private void moveToCoordinate(Coordinate coordinate, Runnable successCallback) {
+        movingTo = coordinate;
         moveTo(coordinate);
 
         // Check if coordinate is equal to current position
         if (currentPos.x == coordinate.x && currentPos.y == coordinate.y) {
             successCallback.run();
+            movingTo = null;
         }
     }
 
@@ -244,5 +247,13 @@ public class Agent {
        // Get the distance of the first product in the order
         return order.getNextCoordinate()
                 .map(coordinate -> warehouse.getCoordinateDelta(currentPos, coordinate));
+    }
+
+    public Optional<Coordinate> getMovingTo() {
+        if (Objects.nonNull(movingTo)) {
+            return Optional.of(movingTo);
+        }
+
+        return Optional.empty();
     }
 }

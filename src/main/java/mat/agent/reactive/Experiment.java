@@ -23,7 +23,7 @@ public class Experiment {
     private int stepCount = 0;
     private final Parent root;
     private final Stage stage;
-    private ExperimentCase experimentCase;
+    private LinkedList<ExperimentCase> experimentCases = new LinkedList<>();
     private final Timer timer = new Timer();
 
     Experiment(Stage stage, Parent root) {
@@ -259,11 +259,11 @@ public class Experiment {
         }
     }
 
-    public void setCase(ExperimentCase experimentCase) {
-        this.experimentCase = experimentCase;
+    public void add(ExperimentCase experimentCase) {
+        experimentCases.add(experimentCase);
     }
 
-    private Warehouse setUpWarehouse() {
+    private Warehouse setUpWarehouse(ExperimentCase experimentCase) {
         Warehouse warehouse = new Warehouse(experimentCase.getSizeX(), experimentCase.getSizeY());
         warehouse.setOrderDistributionStrategy(experimentCase.getOrderDistributionStrategy());
         addDropZones(warehouse);
@@ -280,11 +280,19 @@ public class Experiment {
     }
 
     public void run() {
+        for (ExperimentCase experimentCase : experimentCases) {
+            run(experimentCase);
+        }
+
+        stop();
+    }
+
+    public void run(ExperimentCase experimentCase) {
         if (Objects.isNull(experimentCase)) {
             return;
         }
 
-        Warehouse warehouse = setUpWarehouse();
+        Warehouse warehouse = setUpWarehouse(experimentCase);
 
 
         while (stepCount <= STEP_COUNT_THRESHOLD) {
@@ -317,15 +325,19 @@ public class Experiment {
 
         // Sum together all collisions
         logger.info("Collisions: " + warehouse.getAgents().stream().mapToInt(Agent::getCollisionCount).sum());
-        exit();
+        end();
     }
 
     public void runGui() {
-        if (Objects.isNull(experimentCase)) {
+        if (experimentCases.isEmpty()) {
             return;
         }
 
-        Warehouse warehouse = setUpWarehouse();
+        logger.warn("Gui can only run the first experiment case");
+
+        ExperimentCase experimentCase = experimentCases.get(0);
+
+        Warehouse warehouse = setUpWarehouse(experimentCase);
 
         AppController appController = new AppController(root);
         Scene scene = new Scene(root, 800, 800);
@@ -376,21 +388,26 @@ public class Experiment {
     }
 
 
-    public void exit() {
+    public void end() {
         //logger.info("Took " + stepCount + " steps");
         //logger.info(passTroughBuffer + " finished orders in " + PASS_TROUGH_INTERVAL + " time steps");
         float passTroughPerStepCount = (passTrough / (float) stepCount);
         logger.info("Result - Total completed orders:" + passTrough + "," + "Average completed orders:" + passTroughPerStepCount + "," + "For time steps count:" + PASS_TROUGH_INTERVAL);
-        stop();
-        Platform.exit();
-        System.exit(0);
+        passTrough = 0;
+        stepCount = 0;
     }
 
-    private void stop() {
+    public void stop() {
+        Platform.exit();
+        System.exit(0);
         cleanup();
         logger.info("Stopping application..");
     }
 
+    public void exit() {
+        end();
+        stop();
+    }
 
     private void cleanup() {
         timer.cancel();

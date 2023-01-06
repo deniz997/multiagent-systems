@@ -34,10 +34,14 @@ public class ECNPStrategy implements OrderDistributionStrategy {
 
             agent.setOrder(firstProductOnly);
 
+            if (restOrder.getCoordinates().size() == 0) {
+                return;
+            }
+
             cnpStrategy.bidForOrder(agent.getWarehouse(), restOrder).ifPresent(nextAgent -> {
                 if (!nextAgent.getId().equals(agent.getId())) {
                     // TODO: Introduce order id
-                    logger.info("Reassigning order " + order + " from agent " + agent.getId() + " to agent " + nextAgent.getId());
+                    // logger.info("Reassigning order " + order + " from agent " + agent.getId() + " to agent " + nextAgent.getId());
                 }
                 nextAgent.setOrder(order);
             });

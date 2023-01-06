@@ -21,25 +21,35 @@ public class App extends javafx.application.Application {
     public void start(Stage stage) throws IOException {
         logger.info("Starting application..");
         Parent root = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("view.fxml")));
-        int agentCount = 150;
+        int agentCount = 100;
         int idlingZoneCount = (int) (agentCount*0.5);
         experiment = new Experiment(stage, root);
-        ExperimentCase experimentCase = new ExperimentCase();
-        experimentCase
+        ExperimentCase experimentCase1 = new ExperimentCase();
+        experimentCase1
                 .setAgentCount(agentCount)
                 .setIdlingZoneCount(idlingZoneCount)
                 .setSizeX(21)
                 .setSizeY(21)
                 .setOrderDistributionStrategy(new ECNPStrategy(10000, 10))
-                .setIdlingZoneDistribution(Warehouse.IdlingZoneDistribution.DISTRIBUTED_BORDER);
+                .setIdlingZoneDistribution(Warehouse.IdlingZoneDistribution.RANDOM);
 
-        experiment.setCase(experimentCase);
-        experiment.runGui();
+        ExperimentCase experimentCase2 = new ExperimentCase();
+        experimentCase2
+                .setAgentCount(agentCount)
+                .setIdlingZoneCount(idlingZoneCount)
+                .setSizeX(41)
+                .setSizeY(41)
+                .setOrderDistributionStrategy(new ECNPStrategy(10000, 10))
+                .setIdlingZoneDistribution(Warehouse.IdlingZoneDistribution.RANDOM);
+
+        experiment.add(experimentCase1);
+        experiment.add(experimentCase2);
+        experiment.run();
     }
 
     @Override
     public void stop() {
-        experiment.exit();
+        experiment.stop();
     }
 
     public static void main(String[] args) {

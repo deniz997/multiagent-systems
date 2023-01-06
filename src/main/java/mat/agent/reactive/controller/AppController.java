@@ -8,9 +8,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import mat.agent.reactive.model.Agent;
 import mat.agent.reactive.model.Coordinate;
+import mat.agent.reactive.model.Order;
 import mat.agent.reactive.model.Warehouse;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 public class AppController implements ControllerInterface {
     private final VBox view;
@@ -81,7 +84,17 @@ public class AppController implements ControllerInterface {
             HBox row = (HBox) view.getChildren().get(coordinate.y);
             HBox cell = (HBox) row.getChildren().get(coordinate.x);
             cell.setBackground(createBackground(Color.RED));
-            cell.getChildren().add(new Text(agent.getId()));
+
+            Optional<Coordinate> nextCoordinate = agent.getMovingTo();
+            if (nextCoordinate.isPresent()) {
+                Coordinate next = nextCoordinate.get();
+                Text text = new Text(agent.getId() + "\n" + "(" + next.x + ", " + next.y + ")");
+                // Set size of text
+                text.setStyle("-fx-font-size: 8px;");
+                // Center text
+                cell.setAlignment(Pos.CENTER);
+                cell.getChildren().add(text);
+            }
         }
     }
 
