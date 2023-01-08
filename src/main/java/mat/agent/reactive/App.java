@@ -21,29 +21,52 @@ public class App extends javafx.application.Application {
     public void start(Stage stage) throws IOException {
         logger.info("Starting application..");
         Parent root = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("view.fxml")));
-        int agentCount = 100;
-        int idlingZoneCount = (int) (agentCount*0.5);
+        int agentCount =761;
+        int size = 41;
+        int idlingZoneCount25 = (int) (agentCount*0.25);
+        int idlingZoneCount5 = (int) (agentCount*0.5);
         experiment = new Experiment(stage, root);
         ExperimentCase experimentCase1 = new ExperimentCase();
         experimentCase1
                 .setAgentCount(agentCount)
-                .setIdlingZoneCount(idlingZoneCount)
-                .setSizeX(21)
-                .setSizeY(21)
-                .setOrderDistributionStrategy(new ECNPStrategy(10000, 10))
-                .setIdlingZoneDistribution(Warehouse.IdlingZoneDistribution.RANDOM);
+                .setIdlingZoneCount(idlingZoneCount25)
+                .setSizeX(size)
+                .setSizeY(size)
+                .setOrderDistributionStrategy(new CNPStrategy(10000,10))
+                .setIdlingZoneDistribution(Warehouse.IdlingZoneDistribution.NEAREST_BORDER);
 
         ExperimentCase experimentCase2 = new ExperimentCase();
         experimentCase2
                 .setAgentCount(agentCount)
-                .setIdlingZoneCount(idlingZoneCount)
-                .setSizeX(41)
-                .setSizeY(41)
-                .setOrderDistributionStrategy(new ECNPStrategy(10000, 10))
+                .setIdlingZoneCount(idlingZoneCount25)
+                .setSizeX(size)
+                .setSizeY(size)
+                .setOrderDistributionStrategy(new CNPStrategy(10000,10))
                 .setIdlingZoneDistribution(Warehouse.IdlingZoneDistribution.RANDOM);
+
+        ExperimentCase experimentCase3 = new ExperimentCase();
+        experimentCase3
+                .setAgentCount(agentCount)
+                .setIdlingZoneCount(idlingZoneCount5)
+                .setSizeX(size)
+                .setSizeY(size)
+                .setOrderDistributionStrategy(new CNPStrategy(10000,10))
+                .setIdlingZoneDistribution(Warehouse.IdlingZoneDistribution.NEAREST_BORDER);
+
+        ExperimentCase experimentCase4 = new ExperimentCase();
+        experimentCase4
+                .setAgentCount(agentCount)
+                .setIdlingZoneCount(idlingZoneCount5)
+                .setSizeX(size)
+                .setSizeY(size)
+                .setOrderDistributionStrategy(new CNPStrategy(10000,10))
+                .setIdlingZoneDistribution(Warehouse.IdlingZoneDistribution.RANDOM);
+
 
         experiment.add(experimentCase1);
         experiment.add(experimentCase2);
+        experiment.add(experimentCase3);
+        experiment.add(experimentCase4);
         experiment.run();
     }
 
