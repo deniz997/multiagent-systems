@@ -34,9 +34,8 @@ public class CNPStrategy implements OrderDistributionStrategy {
             return;
         }
 
-        bucket.tryAcquire(warehouse)
-                .ifPresent(order -> bidForOrder(warehouse, order)
-                        .ifPresent(agent -> agent.setOrder(order)));
+        Order order = bucket.generateOrder(warehouse);
+        bidForOrder(warehouse, order).ifPresent(agent -> agent.setOrder(order));
     }
 
     @Override

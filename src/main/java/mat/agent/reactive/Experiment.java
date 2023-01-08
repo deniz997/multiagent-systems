@@ -17,13 +17,13 @@ public class Experiment {
     private static final Logger logger = LogManager.getLogger(Experiment.class);
     private static final int TIME_STEP_PERIOD_IN_MS = 2;
     private final int PASS_TROUGH_INTERVAL = 10;
-    private final int STEP_COUNT_THRESHOLD = 10000;
+    private final int STEP_COUNT_THRESHOLD = 50000;
     private int passTroughBuffer = 0;
     private int passTrough = 0;
     private int stepCount = 0;
     private final Parent root;
     private final Stage stage;
-    private LinkedList<ExperimentCase> experimentCases = new LinkedList<>();
+    private final LinkedList<ExperimentCase> experimentCases = new LinkedList<>();
     private final Timer timer = new Timer();
 
     Experiment(Stage stage, Parent root) {
@@ -390,10 +390,8 @@ public class Experiment {
 
 
     public void end() {
-        //logger.info("Took " + stepCount + " steps");
-        //logger.info(passTroughBuffer + " finished orders in " + PASS_TROUGH_INTERVAL + " time steps");
         float passTroughPerStepCount = (passTrough / (float) stepCount);
-        logger.info("Result - Total completed orders:" + passTrough + "," + "Average completed orders:" + passTroughPerStepCount + "," + "For time steps count:" + PASS_TROUGH_INTERVAL);
+        logger.info("Result - Total completed orders:" + passTrough + "," + "Average completed orders:" + passTroughPerStepCount);
         passTrough = 0;
         stepCount = 0;
     }

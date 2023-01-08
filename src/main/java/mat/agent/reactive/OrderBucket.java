@@ -24,7 +24,7 @@ public class OrderBucket {
 
     private static final int ORDER_SIZE = 3;;
 
-    private Order generateOrder(Warehouse warehouse) {
+    public Order generateOrder(Warehouse warehouse) {
         Order order = new Order();
 
         for (int i = 0; i < ORDER_SIZE; i++) {
