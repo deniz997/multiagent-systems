@@ -6,10 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import mat.agent.reactive.model.Agent;
-import mat.agent.reactive.model.Coordinate;
-import mat.agent.reactive.model.Order;
-import mat.agent.reactive.model.Warehouse;
+import javafx.scene.text.TextAlignment;
+import mat.agent.reactive.model.*;
 
 import java.util.List;
 import java.util.Objects;
@@ -67,34 +65,62 @@ public class AppController implements ControllerInterface {
                         cell.setBackground(createBackground(Color.GRAY));
                         break;
                     case IDLING_ZONE:
-                        cell.setBackground(createBackground(Color.GREEN));
+                        cell.setBackground(createBackground(Color.hsb(75, 0.45, 0.93)));
                         break;
                     case DROP_ZONE:
-                        cell.setBackground(createBackground(Color.YELLOW));
+                        cell.setBackground(createBackground(Color.hsb(58, 0.5, 1)));
                         break;
                 }
             }
-        };
+        }
+        ;
 
         // Commit agent states
         List<Coordinate> coordinates = warehouse.getAgentCoordinates();
 
+        int index = 0;
         for (Coordinate coordinate : coordinates) {
             Agent agent = warehouse.getAgentByCoordinate(coordinate);
             HBox row = (HBox) view.getChildren().get(coordinate.y);
             HBox cell = (HBox) row.getChildren().get(coordinate.x);
-            cell.setBackground(createBackground(Color.RED));
 
-            Optional<Coordinate> nextCoordinate = agent.getMovingTo();
-            if (nextCoordinate.isPresent()) {
-                Coordinate next = nextCoordinate.get();
-                Text text = new Text(agent.getId() + "\n" + "(" + next.x + ", " + next.y + ")");
-                // Set size of text
-                text.setStyle("-fx-font-size: 8px;");
-                // Center text
-                cell.setAlignment(Pos.CENTER);
-                cell.getChildren().add(text);
+            Order order = agent.getOrder();
+            if (Objects.nonNull(order)) {
+                List<Good> goods = order.getGoods();
+
+                for (int i = 0; i < goods.size(); i++) {
+                    Good good = goods.get(i);
+
+                    HBox orderRow = (HBox) view.getChildren().get(good.getCoordinate().y);
+                    HBox orderCell = (HBox) orderRow.getChildren().get(good.getCoordinate().x);
+                    orderCell.setBackground(createBackground(Color.hsb(200, 0.5, 1)));
+                    orderCell.getChildren().clear();
+                    Text text = new Text("(" + order.getId() + "," + (i + 1) + ")");
+                    text.setStyle("-fx-font-size: 8px;");
+                    text.setTextAlignment(TextAlignment.CENTER);
+                    orderCell.setAlignment(Pos.CENTER);
+                    orderCell.getChildren().add(text);
+                }
             }
+
+            if (index == 0) {
+                cell.setBackground(createBackground(Color.hsb(0, 0.5, 1)));
+                Optional<Coordinate> nextCoordinate = agent.getMovingTo();
+                if (nextCoordinate.isPresent()) {
+                    Coordinate next = nextCoordinate.get();
+                    Text text = new Text(agent.getId() + "\n" + "(" + next.x + ", " + next.y + ")");
+                    // Set size of text
+                    text.setStyle("-fx-font-size: 8px;");
+                    text.setTextAlignment(TextAlignment.CENTER);
+                    text.toFront();
+                    // Center text
+                    cell.setAlignment(Pos.CENTER);
+                    cell.getChildren().add(text);
+                }
+            } else {
+                cell.setBackground(createBackground(Color.hsb(0, 0, 0.6)));
+            }
+            index++;
         }
     }
 

@@ -15,11 +15,8 @@ import java.util.*;
 
 public class Experiment {
     private static final Logger logger = LogManager.getLogger(Experiment.class);
-    private static final int TIME_STEP_PERIOD_IN_MS = 2;
-    private final int PASS_TROUGH_INTERVAL = 10;
-    private final int STEP_COUNT_THRESHOLD = 50000;
-    private int passTroughBuffer = 0;
-    private int passTrough = 0;
+    private static final int TIME_STEP_PERIOD_IN_MS = 50;
+    private final int STEP_COUNT_THRESHOLD = 10000;
     private int stepCount = 0;
     private final Parent root;
     private final Stage stage;
@@ -295,38 +292,24 @@ public class Experiment {
 
         Warehouse warehouse = setUpWarehouse(experimentCase);
 
-
         while (stepCount <= STEP_COUNT_THRESHOLD) {
-            if (stepCount % 10000 == 0) {
+            if (stepCount % 100 == 0) {
                 System.out.println(stepCount + " steps");
             }
 
             stepCount++;
             List<Agent> agents = warehouse.getAgents();
-            List<Agent.Status> statusList = new LinkedList<>();
 
             warehouse.distributeOrders();
 
             for (Agent agent : agents) {
-                statusList.add(agent.react());
-            }
-
-            for (Agent.Status status : statusList) {
-                if (status == Agent.Status.FINISHED_ORDER) {
-                    passTroughBuffer += 1;
-                    passTrough += 1;
-                }
-            }
-
-            if (stepCount % PASS_TROUGH_INTERVAL == 0) {
-                //logger.info(passTroughBuffer + " finished orders in " + PASS_TROUGH_INTERVAL + " time steps");
-                passTroughBuffer = 0;
+                agent.react();
             }
         }
 
         // Sum together all collisions
         logger.info("Collisions: " + warehouse.getAgents().stream().mapToInt(Agent::getCollisionCount).sum());
-        end();
+        end(warehouse.getCompletedOrders());
     }
 
     public void runGui() {
@@ -356,32 +339,20 @@ public class Experiment {
                 Platform.runLater(() -> {
                     stepCount++;
                     List<Agent> agents = warehouse.getAgents();
-                    List<Agent.Status> statusList = new LinkedList<>();
 
                     warehouse.distributeOrders();
 
                     for (Agent agent : agents) {
-                        statusList.add(agent.react());
+                        agent.react();
                     }
 
                     appController.commitState(warehouse);
 
-                    for (Agent.Status status : statusList) {
-                        if (status == Agent.Status.FINISHED_ORDER) {
-                            passTroughBuffer += 1;
-                            passTrough += 1;
-                        }
-                    }
-
-                    if (stepCount % PASS_TROUGH_INTERVAL == 0) {
-                        //logger.info(passTroughBuffer + " finished orders in " + PASS_TROUGH_INTERVAL + " time steps");
-                        passTroughBuffer = 0;
-                    }
 
                     // Stop application if step threshold is reached
                     if (stepCount >= STEP_COUNT_THRESHOLD) {
                         // Exit
-                        exit();
+                        exit(warehouse.getCompletedOrders());
                     }
                 });
             }
@@ -389,10 +360,9 @@ public class Experiment {
     }
 
 
-    public void end() {
-        float passTroughPerStepCount = (passTrough / (float) stepCount);
-        logger.info("Result - Total completed orders:" + passTrough + "," + "Average completed orders:" + passTroughPerStepCount);
-        passTrough = 0;
+    public void end(int completedOrders) {
+        float passTroughPerStepCount = (completedOrders / (float) stepCount);
+        logger.info("Result - Total completed orders:" + completedOrders + "," + "Average completed orders:" + passTroughPerStepCount);
         stepCount = 0;
     }
 
@@ -403,8 +373,8 @@ public class Experiment {
         logger.info("Stopping application..");
     }
 
-    public void exit() {
-        end();
+    public void exit(int completedOrders) {
+        end(completedOrders);
         stop();
     }
 

@@ -1,5 +1,6 @@
 package mat.agent.reactive;
 
+import mat.agent.reactive.model.Good;
 import mat.agent.reactive.model.Order;
 import mat.agent.reactive.model.Warehouse;
 
@@ -28,7 +29,9 @@ public class OrderBucket {
         Order order = new Order();
 
         for (int i = 0; i < ORDER_SIZE; i++) {
-            order.add(warehouse.findRandomFreeCell());
+            Good good = new Good();
+            good.setCoordinate(warehouse.findRandomFreeCell());
+            order.add(good);
         }
 
         return order;
@@ -54,3 +57,4 @@ public class OrderBucket {
         }
     }
 }
+

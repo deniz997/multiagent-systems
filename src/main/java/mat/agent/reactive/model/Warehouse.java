@@ -8,7 +8,6 @@ import org.apache.logging.log4j.Logger;
 import java.util.*;
 
 public class Warehouse {
-
     public enum IdlingZoneDistribution {
         RANDOM_BORDER,
         RANDOM,
@@ -23,7 +22,6 @@ public class Warehouse {
     }
 
     public enum ReportType {
-        ORDER_COMPLETED,
         GOOD_DROPPED,
         GOOD_PICKED_UP,
     }
@@ -194,4 +192,45 @@ public class Warehouse {
 
         return null;
     }
+
+    public int getCompletedOrders() {
+        return orderDistributionStrategy.getCompletedOrders();
+    }
+
+    public List<Good> findOptimalPath(Order order) {
+        // Find the optimal path for the order
+        List<Good> goods = order.getGoods();
+        List<Good> optimalPath = new LinkedList<>();
+
+        if (goods.size() == 0) {
+            return optimalPath;
+        }
+
+        // Find the closest good to the starting good
+        Good currentGood = goods.get(0);
+        optimalPath.add(currentGood);
+        goods.remove(currentGood);
+
+        while (!goods.isEmpty()) {
+            Good closestGood = null;
+            int currentDelta = Integer.MAX_VALUE;
+
+            for (Good good : goods) {
+                assert currentGood != null;
+                int delta = getCoordinateDelta(currentGood.getCoordinate(), good.getCoordinate());
+
+                if (delta < currentDelta) {
+                    currentDelta = delta;
+                    closestGood = good;
+                }
+            }
+
+            optimalPath.add(closestGood);
+            goods.remove(closestGood);
+            currentGood = closestGood;
+        }
+
+        return optimalPath;
+    }
+
 }

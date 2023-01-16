@@ -1,20 +1,21 @@
 package mat.agent.reactive.strategy;
 
-import mat.agent.reactive.model.Agent;
-import mat.agent.reactive.model.Coordinate;
-import mat.agent.reactive.model.Order;
-import mat.agent.reactive.model.Warehouse;
+import mat.agent.reactive.OrderBucket;
+import mat.agent.reactive.model.*;
 
 import java.util.LinkedList;
 
 public class BasicStrategy implements OrderDistributionStrategy {
     private static final int ORDER_SIZE = 3;
+    private int completedOrders = 0;
 
     private Order generateOrder(Warehouse warehouse) {
         Order order = new Order();
 
         for (int i = 0; i < ORDER_SIZE; i++) {
-            order.add(warehouse.findRandomFreeCell());
+            Good good = new Good();
+            good.setCoordinate(warehouse.findRandomFreeCell());
+            order.add(good);
         }
 
         return order;
@@ -29,7 +30,16 @@ public class BasicStrategy implements OrderDistributionStrategy {
         }
     }
 
+
     @Override
     public void onReport(Warehouse.ReportType reportType, Agent agent) {
+        if (reportType == Warehouse.ReportType.GOOD_DROPPED && agent.getOrder().count() == 0) {
+            completedOrders++;
+        }
+    }
+
+    @Override
+    public int getCompletedOrders() {
+        return completedOrders;
     }
 }

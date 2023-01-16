@@ -7,4 +7,6 @@ public interface OrderDistributionStrategy {
     void distribute(Warehouse warehouse);
 
     void onReport(Warehouse.ReportType reportType, Agent agent);
+
+    int getCompletedOrders();
 }

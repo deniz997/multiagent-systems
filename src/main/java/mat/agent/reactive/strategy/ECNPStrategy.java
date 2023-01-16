@@ -1,50 +1,75 @@
 package mat.agent.reactive.strategy;
 
-import mat.agent.reactive.model.Agent;
-import mat.agent.reactive.model.Coordinate;
-import mat.agent.reactive.model.Order;
-import mat.agent.reactive.model.Warehouse;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import mat.agent.reactive.OrderBucket;
+import mat.agent.reactive.model.*;
 
+import java.util.Objects;
+import java.util.Optional;
+import java.util.concurrent.TimeUnit;
+
+/*
+ * This strategy extends the cnp strategy by trying to redistribute orders whenever possible to maximize efficiency.
+ */
 public class ECNPStrategy implements OrderDistributionStrategy {
-    private static final Logger logger = LogManager.getLogger(ECNPStrategy.class);
     private final CNPStrategy cnpStrategy;
+    private Warehouse warehouse;
 
-    public ECNPStrategy(int maxOrders, int refillIntervalInMilliSecond) {
-        this.cnpStrategy = new CNPStrategy(maxOrders, refillIntervalInMilliSecond);
+    public ECNPStrategy() {
+
+        cnpStrategy = new CNPStrategy();
     }
+
 
     @Override
     public void distribute(Warehouse warehouse) {
+        if (Objects.isNull(this.warehouse)) {
+            this.warehouse = warehouse;
+        }
+
         cnpStrategy.distribute(warehouse);
     }
 
     @Override
     public void onReport(Warehouse.ReportType reportType, Agent agent) {
-        // If an agent drops a good we make the order available for bidding again
+        cnpStrategy.onReport(reportType, agent);
+
+        // At least 50% of agents should be available
+        long freeAgentsCount = warehouse.getAgents().stream().filter(Agent::canReceiveOrder).count();
+        if (freeAgentsCount <= (long) warehouse.getAgents().size() * 0.5) {
+            return;
+        }
+
         if (reportType == Warehouse.ReportType.GOOD_PICKED_UP) {
             Order order = agent.getOrder();
-            // Split up the order
-            Order firstProductOnly = new Order(order.pop());
-            Order restOrder = new Order();
-            for (Coordinate coordinate : order.getCoordinates()) {
-                restOrder.add(coordinate);
-            }
+            // Split the order in half
+            int halfSize = order.count() / 2;
+            int rest = order.count() % 2;
 
-            agent.setOrder(firstProductOnly);
-
-            if (restOrder.getCoordinates().size() == 0) {
+            if (halfSize < 1) {
                 return;
             }
 
-            cnpStrategy.bidForOrder(agent.getWarehouse(), restOrder).ifPresent(nextAgent -> {
+            Order firstHalfOrder = new Order();
+            Order secondHalfOrder = new Order();
+            for (Good good : order.getNextGoods().subList(0, halfSize + rest)) {
+                firstHalfOrder.add(good);
+            }
+            agent.setOrder(firstHalfOrder);
+            for (Good good : order.getNextGoods().subList(halfSize + rest + 1, order.count())) {
+                secondHalfOrder.add(good);
+            }
+
+            cnpStrategy.bidForOrder(agent.getWarehouse(), secondHalfOrder).ifPresent(nextAgent -> {
                 if (!nextAgent.getId().equals(agent.getId())) {
-                    // TODO: Introduce order id
-                    // logger.info("Reassigning order " + order + " from agent " + agent.getId() + " to agent " + nextAgent.getId());
+                    // System.out.println("Reassigning order " + order.getId() + " from agent " + agent.getId() + " to agent " + nextAgent.getId());
                 }
-                nextAgent.setOrder(order);
+                nextAgent.setOrder(secondHalfOrder);
             });
         }
+    }
+
+    @Override
+    public int getCompletedOrders() {
+        return cnpStrategy.getCompletedOrders();
     }
 }

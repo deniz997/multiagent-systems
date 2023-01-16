@@ -6,7 +6,6 @@ import org.apache.logging.log4j.Logger;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Random;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Agent {
     private static final Logger logger = LogManager.getLogger(Agent.class);
@@ -19,7 +18,6 @@ public class Agent {
         FREE,
         GET_PRODUCT,
         TO_DROP_OFF,
-        FINISHED_ORDER,
         TO_IDLING_ZONE
     }
 
@@ -41,6 +39,10 @@ public class Agent {
 
     public String getId() {
         return id;
+    }
+
+    public Status getStatus() {
+        return status;
     }
 
     public void setCurrentPosX(int x) {
@@ -176,7 +178,7 @@ public class Agent {
             case FREE:
                 if (hasOrder()) {
                     // TODO: Maybe adjust this parameter
-                    pendingCount = new Random().nextInt(3 * (warehouse.getSizeX() + warehouse.getSizeY()));
+                    pendingCount = new Random().nextInt(2 * (warehouse.getSizeX() + warehouse.getSizeY()));
                     setStatus(Status.GET_PRODUCT);
                 } else {
                     pendingCount--;
@@ -190,26 +192,17 @@ public class Agent {
                         }));
                 break;
             case TO_DROP_OFF:
-                AtomicBoolean isFinishedOrder = new AtomicBoolean(false);
                 Optional<Coordinate> nextDropZone = warehouse.getClosestZoneOf(Warehouse.GridCellType.DROP_ZONE, currentPos);
-
                 nextDropZone.ifPresent(coordinate -> moveToCoordinate(coordinate, () -> {
-                    order.pop();
+                    order.drop();
                     warehouse.report(Warehouse.ReportType.GOOD_DROPPED, this);
-
                     if (hasOrder()) {
                         status = Status.GET_PRODUCT;
                     } else {
-                        warehouse.report(Warehouse.ReportType.ORDER_COMPLETED, this);
-                        isFinishedOrder.set(true);
                         status = Status.TO_IDLING_ZONE;
                     }
                 }));
 
-                if (isFinishedOrder.get()) {
-                    isFinishedOrder.set(false);
-                    return Status.FINISHED_ORDER;
-                }
                 break;
             case TO_IDLING_ZONE:
                 pendingCount--;
