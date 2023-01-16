@@ -23,7 +23,7 @@ public class OrderBucket {
         this.lastRefillTime = System.nanoTime();
     }
 
-    private static final int ORDER_SIZE = 3;;
+    private static final int ORDER_SIZE = 4;;
 
     public Order generateOrder(Warehouse warehouse) {
         Order order = new Order();

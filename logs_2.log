@@ -126,26 +126,26 @@
 [INFO] 2023-01-16 06:18:06.090 [JavaFX Application Thread] Experiment - Collisions: 1476573
 [INFO] 2023-01-16 06:18:06.091 [JavaFX Application Thread] Experiment - Result - Total completed orders:4757,Average completed orders:0.47565243
 [INFO] 2023-01-16 12:48:15.322 [JavaFX Application Thread] App - Starting application..
-[INFO] 2023-01-16 12:48:15.538 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:381,Number of agents:762,Idling zone distribution:RANDOM,OrderDistributionStrategy:class mat.agent.reactive.strategy.BasicStrategy
+[INFO] 2023-01-16 12:48:15.538 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:190,Number of agents:762,Idling zone distribution:RANDOM,OrderDistributionStrategy:class mat.agent.reactive.strategy.BasicStrategy
 [INFO] 2023-01-16 13:00:45.127 [JavaFX Application Thread] Experiment - Collisions: 4972812
 [INFO] 2023-01-16 13:00:45.150 [JavaFX Application Thread] Experiment - Result - Total completed orders:2356,Average completed orders:0.23557644
 [INFO] 2023-01-16 13:03:17.764 [JavaFX Application Thread] App - Starting application..
-[INFO] 2023-01-16 13:03:17.943 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:381,Number of agents:762,Idling zone distribution:RANDOM,OrderDistributionStrategy:class mat.agent.reactive.strategy.CNPStrategy
+[INFO] 2023-01-16 13:03:17.943 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:190,Number of agents:762,Idling zone distribution:RANDOM,OrderDistributionStrategy:class mat.agent.reactive.strategy.CNPStrategy
 [INFO] 2023-01-16 13:14:58.863 [JavaFX Application Thread] Experiment - Collisions: 4914082
 [INFO] 2023-01-16 13:14:58.870 [JavaFX Application Thread] Experiment - Result - Total completed orders:1355,Average completed orders:0.13548645
 [INFO] 2023-01-16 13:15:22.628 [JavaFX Application Thread] App - Starting application..
-[INFO] 2023-01-16 13:15:22.817 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:381,Number of agents:762,Idling zone distribution:NEAREST_BORDER,OrderDistributionStrategy:class mat.agent.reactive.strategy.BasicStrategy
+[INFO] 2023-01-16 13:15:22.817 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:190,Number of agents:762,Idling zone distribution:NEAREST_BORDER,OrderDistributionStrategy:class mat.agent.reactive.strategy.BasicStrategy
 [INFO] 2023-01-16 13:21:49.694 [JavaFX Application Thread] Experiment - Collisions: 4994286
 [INFO] 2023-01-16 13:21:49.702 [JavaFX Application Thread] Experiment - Result - Total completed orders:1960,Average completed orders:0.1959804
 [INFO] 2023-01-16 13:22:09.389 [JavaFX Application Thread] App - Starting application..
-[INFO] 2023-01-16 13:22:09.598 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:381,Number of agents:762,Idling zone distribution:NEAREST_BORDER,OrderDistributionStrategy:class mat.agent.reactive.strategy.CNPStrategy
+[INFO] 2023-01-16 13:22:09.598 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:190,Number of agents:762,Idling zone distribution:NEAREST_BORDER,OrderDistributionStrategy:class mat.agent.reactive.strategy.CNPStrategy
 [INFO] 2023-01-16 13:29:29.142 [JavaFX Application Thread] Experiment - Collisions: 5278244
 [INFO] 2023-01-16 13:29:29.149 [JavaFX Application Thread] Experiment - Result - Total completed orders:749,Average completed orders:0.07489251
 [INFO] 2023-01-16 14:11:14.494 [JavaFX Application Thread] App - Starting application..
-[INFO] 2023-01-16 14:11:14.662 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:381,Number of agents:762,Idling zone distribution:RANDOM,OrderDistributionStrategy:class mat.agent.reactive.strategy.ECNPStrategy
+[INFO] 2023-01-16 14:11:14.662 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:190,Number of agents:762,Idling zone distribution:RANDOM,OrderDistributionStrategy:class mat.agent.reactive.strategy.ECNPStrategy
 [INFO] 2023-01-16 14:22:45.766 [JavaFX Application Thread] Experiment - Collisions: 4588518
 [INFO] 2023-01-16 14:22:45.776 [JavaFX Application Thread] Experiment - Result - Total completed orders:1158,Average completed orders:0.11578842
 [INFO] 2023-01-16 14:23:16.729 [JavaFX Application Thread] App - Starting application..
-[INFO] 2023-01-16 14:23:17.042 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:381,Number of agents:762,Idling zone distribution:NEAREST_BORDER,OrderDistributionStrategy:class mat.agent.reactive.strategy.ECNPStrategy
+[INFO] 2023-01-16 14:23:17.042 [JavaFX Application Thread] Experiment - Grid - Size x:41,Size y:41,Number of idling zones:190,Number of agents:762,Idling zone distribution:NEAREST_BORDER,OrderDistributionStrategy:class mat.agent.reactive.strategy.ECNPStrategy
 [INFO] 2023-01-16 14:31:10.132 [JavaFX Application Thread] Experiment - Collisions: 5088192
 [INFO] 2023-01-16 14:31:10.138 [JavaFX Application Thread] Experiment - Result - Total completed orders:816,Average completed orders:0.08159184

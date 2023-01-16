@@ -1,9 +1,9 @@
 package mat.agent.reactive.model;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.stream.Collectors;
 
 public class Order {
@@ -36,9 +36,8 @@ public class Order {
 	}
 
 	public Optional<Good> drop() {
-		if (count() > 0) {
+		if (goods.size() > 0) {
 			Good goodToPop = goods.get(currentPointer);
-			goodToPop.pickup();
 			currentPointer++;
 			return Optional.of(goodToPop);
 		}

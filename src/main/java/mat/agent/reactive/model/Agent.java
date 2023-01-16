@@ -62,7 +62,7 @@ public class Agent {
     }
 
     public boolean canReceiveOrder() {
-        return pendingCount <= 0;
+        return pendingCount <= 0 && status == Status.FREE;
     }
 
     public int getCollisionCount() {
@@ -169,7 +169,7 @@ public class Agent {
     }
 
     public boolean hasOrder() {
-        return Objects.nonNull(order) && order.count() > 0;
+        return Objects.nonNull(order) && !order.isCompleted();
     }
 
     public Status react() {

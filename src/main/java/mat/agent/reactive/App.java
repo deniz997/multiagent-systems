@@ -29,24 +29,25 @@ public class App extends javafx.application.Application {
 
         experiment = new Experiment(stage, root);
 
-        // List<ExperimentCase> experimentCases = createExperimentCases();
+        /* List<ExperimentCase> experimentCases = createExperimentCases();
 
-        /* for (ExperimentCase experimentCase : experimentCases) {
+        for (ExperimentCase experimentCase : experimentCases) {
             experiment.add(experimentCase);
         } */
 
         ExperimentCase experimentCase = new ExperimentCase();
         experimentCase
-                .setAgentCount(762)
-                .setIdlingZoneCount(381)
-                .setSizeX(41)
-                .setSizeY(41)
+                .setAgentCount(10)
+                .setIdlingZoneCount(10)
+                .setSizeX(21)
+                .setSizeY(21)
                 .setOrderDistributionStrategy(new ECNPStrategy())
                 .setIdlingZoneDistribution(Warehouse.IdlingZoneDistribution.NEAREST_BORDER);
 
         experiment.add(experimentCase);
 
-        experiment.run();
+        experiment.runGui();
+        // experiment.runWithTimer(100);
     }
 
     public List<ExperimentCase> createExperimentCases() {

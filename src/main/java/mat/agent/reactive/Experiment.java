@@ -15,7 +15,7 @@ import java.util.*;
 
 public class Experiment {
     private static final Logger logger = LogManager.getLogger(Experiment.class);
-    private static final int TIME_STEP_PERIOD_IN_MS = 50;
+    private static final int TIME_STEP_PERIOD_IN_MS = 200;
     private final int STEP_COUNT_THRESHOLD = 10000;
     private int stepCount = 0;
     private final Parent root;
@@ -310,6 +310,35 @@ public class Experiment {
         // Sum together all collisions
         logger.info("Collisions: " + warehouse.getAgents().stream().mapToInt(Agent::getCollisionCount).sum());
         end(warehouse.getCompletedOrders());
+    }
+
+    public void runWithTimer(int timeStepPeriodInMS) {
+        ExperimentCase experimentCase = experimentCases.get(0);
+
+        Warehouse warehouse = setUpWarehouse(experimentCase);
+
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                // Mutate warehouse state and visualize new state
+                Platform.runLater(() -> {
+                    stepCount++;
+                    List<Agent> agents = warehouse.getAgents();
+
+                    warehouse.distributeOrders();
+
+                    for (Agent agent : agents) {
+                        agent.react();
+                    }
+
+                    // Stop application if step threshold is reached
+                    if (stepCount >= STEP_COUNT_THRESHOLD) {
+                        // Exit
+                        exit(warehouse.getCompletedOrders());
+                    }
+                });
+            }
+        }, 0, timeStepPeriodInMS);
     }
 
     public void runGui() {

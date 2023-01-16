@@ -35,7 +35,10 @@ public class ECNPStrategy implements OrderDistributionStrategy {
 
         // At least 50% of agents should be available
         long freeAgentsCount = warehouse.getAgents().stream().filter(Agent::canReceiveOrder).count();
-        if (freeAgentsCount <= (long) warehouse.getAgents().size() * 0.5) {
+        /* if (freeAgentsCount <= (long) warehouse.getAgents().size() * 0.1) {
+            return;
+        }*/
+        if (freeAgentsCount < 3) {
             return;
         }
 
@@ -61,7 +64,7 @@ public class ECNPStrategy implements OrderDistributionStrategy {
 
             cnpStrategy.bidForOrder(agent.getWarehouse(), secondHalfOrder).ifPresent(nextAgent -> {
                 if (!nextAgent.getId().equals(agent.getId())) {
-                    // System.out.println("Reassigning order " + order.getId() + " from agent " + agent.getId() + " to agent " + nextAgent.getId());
+                    System.out.println("Reassigning order " + order.getId() + " from agent " + agent.getId() + " to agent " + nextAgent.getId());
                 }
                 nextAgent.setOrder(secondHalfOrder);
             });
